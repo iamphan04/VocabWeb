@@ -93,6 +93,7 @@
             <option value="phrasal">🔗 Phrasal Verb</option>
             <option value="np">🧩 Cụm Danh Từ (Noun Phrase)</option>
             <option value="idiom">💡 Thành Ngữ (Idiom)</option>
+            <option value="collocation">🤝 Collocation</option>
           </select>
         </div>
         <div class="form-actions">
@@ -120,12 +121,16 @@
           <option value="phrasal">🔗 Phrasal Verb</option>
           <option value="np">🧩 Cụm Danh Từ</option>
           <option value="idiom">💡 Thành Ngữ</option>
+          <option value="collocation">🤝 Collocation</option>
         </select>
         <select id="filter-status" class="filter-select" onchange="filterWords()">
           <option value="all">Tất cả</option>
           <option value="learning">Đang học</option>
           <option value="mastered">Đã thuộc</option>
+          <option value="old">📖 Từ cũ</option>
+          <option value="today">🌟 Mới hôm nay</option>
         </select>
+        <button class="btn btn-ghost" onclick="confirmRestoreSheetWords()" title="Khôi phục 256 từ gốc từ Google Sheet">📥 256 từ gốc</button>
         <button class="btn btn-danger-outline" onclick="confirmClearAll()" title="Xóa tất cả">🗑️ Xóa hết</button>
       </div>
 
@@ -302,6 +307,7 @@
         <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
       <div class="modal-body">
+        <div id="modal-error" class="form-error" style="display:none"></div>
         <div class="form-group">
           <label class="form-label">Từ Tiếng Anh *</label>
           <input id="modal-en" class="form-input" type="text" />
@@ -329,6 +335,7 @@
             <option value="phrasal">🔗 Phrasal Verb</option>
             <option value="np">🧩 Cụm Danh Từ (Noun Phrase)</option>
             <option value="idiom">💡 Thành Ngữ (Idiom)</option>
+            <option value="collocation">🤝 Collocation</option>
           </select>
         </div>
       </div>
@@ -355,6 +362,7 @@
     </div>
   </div>
 
+  <script src="default_vocab.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -23,23 +23,40 @@ let quizCurrentDirection = 'en-to-vi';
 
 // ── Word Type Config ──────────────────────────────────────
 const WORD_TYPES = {
-  '':        { label: '',               color: '' },
-  'n':       { label: 'Danh từ',        color: 'wt-n' },
-  'v':       { label: 'Động từ',        color: 'wt-v' },
-  'adj':     { label: 'Tính từ',        color: 'wt-adj' },
-  'adv':     { label: 'Trạng từ',       color: 'wt-adv' },
-  'phrasal': { label: 'Phrasal Verb',   color: 'wt-phrasal' },
-  'np':      { label: 'Cụm Danh Từ',    color: 'wt-np' },
-  'idiom':   { label: 'Thành Ngữ',      color: 'wt-idiom' },
+  '':            { label: '',               color: '' },
+  'n':           { label: 'Danh từ',        color: 'wt-n' },
+  'v':           { label: 'Động từ',        color: 'wt-v' },
+  'adj':         { label: 'Tính từ',        color: 'wt-adj' },
+  'adv':         { label: 'Trạng từ',       color: 'wt-adv' },
+  'phrasal':     { label: 'Phrasal Verb',   color: 'wt-phrasal' },
+  'np':          { label: 'Cụm Danh Từ',    color: 'wt-np' },
+  'idiom':       { label: 'Thành Ngữ',      color: 'wt-idiom' },
+  'collocation': { label: 'Collocation',    color: 'wt-collocation' },
 };
 
 // ── LocalStorage ─────────────────────────────────────────
 const STORAGE_KEY = 'vocabmaster_words';
+const IMPORT_KEY  = 'vocab_sheet_imported_v2';
 
 function loadWords() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    words = raw ? JSON.parse(raw) : getDefaultWords();
+    const hasImported = localStorage.getItem(IMPORT_KEY);
+
+    if (!raw || hasImported !== 'true') {
+      const existing = raw ? JSON.parse(raw) : [];
+      const dummyEns = new Set(['ephemeral', 'serendipity', 'ubiquitous', 'resilient', 'give up', 'break a leg', 'ambiguous']);
+      const customWords = existing.filter(w => !dummyEns.has((w.en || '').toLowerCase()));
+      const defaultList = getDefaultWords();
+      const defaultEnSet = new Set(defaultList.map(w => (w.en || '').toLowerCase()));
+      const wordsToKeep = customWords.filter(w => !defaultEnSet.has((w.en || '').toLowerCase()));
+
+      words = [...defaultList, ...wordsToKeep];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+      localStorage.setItem(IMPORT_KEY, 'true');
+    } else {
+      words = JSON.parse(raw);
+    }
   } catch {
     words = getDefaultWords();
   }
@@ -50,14 +67,14 @@ function saveWords() {
 }
 
 function getDefaultWords() {
+  if (window.DEFAULT_SHEET_WORDS && Array.isArray(window.DEFAULT_SHEET_WORDS) && window.DEFAULT_SHEET_WORDS.length > 0) {
+    return window.DEFAULT_SHEET_WORDS.map(w => ({
+      ...w,
+      id: uid()
+    }));
+  }
   return [
-    { id: uid(), en: 'ephemeral',   vi: 'phù du, tạm thời',      pronoun: '/ɪˈfem.ər.əl/',       example: 'Fame is ephemeral.',                  status: 'learning', wordType: 'adj' },
-    { id: uid(), en: 'serendipity', vi: 'may mắn bất ngờ',        pronoun: '/ˌser.ənˈdɪp.ɪ.ti/', example: 'Finding that book was serendipity.',  status: 'learning', wordType: 'n' },
-    { id: uid(), en: 'ubiquitous',  vi: 'phổ biến khắp nơi',      pronoun: '/juːˈbɪk.wɪ.təs/',    example: 'Smartphones are ubiquitous today.', status: 'learning', wordType: 'adj' },
-    { id: uid(), en: 'resilient',   vi: 'kiên cường, dẻo dai',     pronoun: '/rɪˈzɪl.i.ənt/',      example: 'She is a resilient person.',        status: 'mastered', wordType: 'adj' },
-    { id: uid(), en: 'give up',     vi: 'từ bỏ, bỏ cuộc',         pronoun: '/ɡɪv ʌp/',            example: "Don't give up on your dreams.",    status: 'learning', wordType: 'phrasal' },
-    { id: uid(), en: 'ambiguous',   vi: 'mơ hồ, không rõ ràng',   pronoun: '/æmˈbɪɡ.ju.əs/',       example: 'The message was ambiguous.',       status: 'learning', wordType: 'adj' },
-    { id: uid(), en: 'break a leg', vi: 'chúc may mắn',            pronoun: '',                      example: 'Break a leg at your interview!',   status: 'learning', wordType: 'idiom' },
+    { id: uid(), en: 'prohibit', vi: 'cấm', pronoun: '/prəˈhɪbɪt/', example: '', status: 'learning', wordType: '', addedAt: 0 }
   ];
 }
 
@@ -138,8 +155,20 @@ function filterWords() {
   const status = document.getElementById('filter-status').value;
   const type   = document.getElementById('filter-type').value;
   let list = [...words];
-  if (status !== 'all') list = list.filter(w => w.status === status);
-  if (type   !== 'all') list = list.filter(w => (w.wordType || '') === type);
+
+  if (status === 'learning') {
+    list = list.filter(w => w.status === 'learning');
+  } else if (status === 'mastered') {
+    list = list.filter(w => w.status === 'mastered');
+  } else if (status === 'old') {
+    const today = new Date(); today.setHours(0,0,0,0);
+    list = list.filter(w => (w.addedAt || 0) < today.getTime());
+  } else if (status === 'today') {
+    const today = new Date(); today.setHours(0,0,0,0);
+    list = list.filter(w => (w.addedAt || 0) >= today.getTime());
+  }
+
+  if (type !== 'all') list = list.filter(w => (w.wordType || '') === type);
   if (q) list = list.filter(w =>
     w.en.toLowerCase().includes(q) ||
     w.vi.toLowerCase().includes(q) ||
@@ -222,18 +251,23 @@ function openEditModal(id) {
   const w = words.find(x => x.id === id);
   if (!w) return;
   editModalId = id;
-  document.getElementById('modal-en').value      = w.en;
-  document.getElementById('modal-vi').value      = w.vi;
+  document.getElementById('modal-en').value      = w.en || '';
+  document.getElementById('modal-vi').value      = w.vi || '';
   document.getElementById('modal-pronoun').value = w.pronoun || '';
   document.getElementById('modal-example').value = w.example || '';
   document.getElementById('modal-type').value    = w.wordType || '';
-  setActiveTypeChip('type-chips-modal', w.wordType || '');
+  hideError('modal-error');
   document.getElementById('modal-overlay').style.display = 'flex';
+  setTimeout(() => {
+    const enInp = document.getElementById('modal-en');
+    if (enInp) enInp.focus();
+  }, 50);
 }
 
 function closeModal() {
   document.getElementById('modal-overlay').style.display = 'none';
   editModalId = null;
+  hideError('modal-error');
 }
 
 function closeModalOnOverlay(event) {
@@ -247,19 +281,43 @@ function saveModalEdit() {
   const example  = document.getElementById('modal-example').value.trim();
   const wordType = document.getElementById('modal-type').value;
 
-  if (!en || !vi) { showToast('⚠️ Vui lòng nhập đầy đủ thông tin!', 'error'); return; }
+  if (!en || !vi) {
+    showError('modal-error', '⚠️ Vui lòng nhập từ tiếng Anh và nghĩa tiếng Việt!');
+    showToast('⚠️ Vui lòng nhập đầy đủ từ tiếng Anh và nghĩa tiếng Việt!', 'error');
+    return;
+  }
 
   const duplicate = words.find(w => w.en.toLowerCase() === en.toLowerCase() && w.id !== editModalId);
-  if (duplicate) { showToast(`⚠️ Từ "${en}" đã tồn tại!`, 'error'); return; }
+  if (duplicate) {
+    showError('modal-error', `⚠️ Từ "${escHtml(en)}" đã tồn tại trong danh sách!`);
+    showToast(`⚠️ Từ "${en}" đã tồn tại!`, 'error');
+    return;
+  }
 
   const idx = words.findIndex(w => w.id === editModalId);
-  if (idx !== -1) words[idx] = { ...words[idx], en, vi, pronoun, example, wordType };
+  if (idx !== -1) {
+    words[idx] = { ...words[idx], en, vi, pronoun, example, wordType };
+  }
 
   saveWords();
   filterWords();
   updateStats();
   closeModal();
-  showToast('✅ Đã lưu thay đổi!', 'success');
+  showToast('✅ Đã cập nhật từ vựng thành công!', 'success');
+}
+
+function confirmRestoreSheetWords() {
+  showConfirm(
+    'Khôi phục 256 từ gốc',
+    'Bạn có chắc muốn nạp lại toàn bộ <strong>256 từ vựng gốc</strong> từ Google Sheets? (Các từ này được tính là từ vựng cũ)',
+    () => {
+      words = getDefaultWords();
+      saveWords();
+      filterWords();
+      updateStats();
+      showToast('📥 Đã khôi phục 256 từ vựng gốc!', 'success');
+    }
+  );
 }
 
 // ── Delete ────────────────────────────────────────────────
@@ -643,10 +701,20 @@ document.addEventListener('keydown', e => {
     closeConfirm();
   }
 
-  // Vocab tab: Enter to save word
-  if (e.key === 'Enter' && document.getElementById('tab-vocab').classList.contains('active')) {
-    const focused = document.activeElement;
-    if (focused && focused.classList.contains('form-input')) saveWord();
+  // Enter shortcut
+  if (e.key === 'Enter') {
+    const modal = document.getElementById('modal-overlay');
+    if (modal && modal.style.display !== 'none' && modal.style.display !== '') {
+      e.preventDefault();
+      saveModalEdit();
+      return;
+    }
+
+    // Vocab tab: Enter on form input to save word
+    if (document.getElementById('tab-vocab').classList.contains('active')) {
+      const focused = document.activeElement;
+      if (focused && focused.classList.contains('form-input')) saveWord();
+    }
   }
 
   // Quiz tab typing shortcuts
