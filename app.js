@@ -38,55 +38,26 @@ const WORD_TYPES = {
 const STORAGE_KEY = 'vocabmaster_words';
 const IMPORT_KEY  = 'vocab_sheet_imported_v2';
 
-function getUserStorageKey() {
-  if (typeof currentUser !== 'undefined' && currentUser && currentUser.email) {
-    return 'vocab_words_' + currentUser.email.toLowerCase();
-  }
-  return STORAGE_KEY;
-}
-
 function loadWords() {
-  const key = getUserStorageKey();
-  try {
-    const raw = localStorage.getItem(key);
-    const hasImported = localStorage.getItem(IMPORT_KEY);
-
-    if (!raw) {
-      // Check if global STORAGE_KEY has data to copy over for new user
-      const globalRaw = localStorage.getItem(STORAGE_KEY);
-      if (globalRaw && globalRaw !== '[]') {
-        words = JSON.parse(globalRaw);
-      } else {
-        words = getDefaultWords();
-      }
-      localStorage.setItem(key, JSON.stringify(words));
-      localStorage.setItem(IMPORT_KEY, 'true');
-    } else {
-      words = JSON.parse(raw);
+  if (typeof loadWordsFromServer === 'function') {
+    loadWordsFromServer();
+  } else {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) words = JSON.parse(raw);
+      else words = getDefaultWords();
+    } catch {
+      words = getDefaultWords();
     }
-  } catch {
-    words = getDefaultWords();
   }
 }
 
 function saveWords() {
-  // If cloud user (Firebase)
-  if (typeof currentUser !== 'undefined' && currentUser && !currentUser.isLocal && typeof saveWordsToFirestore === 'function') {
-    saveWordsToFirestore();
-    return;
-  }
-
-  // If local user or guest
-  const key = getUserStorageKey();
-  localStorage.setItem(key, JSON.stringify(words));
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
-
-  if (typeof updateSyncBadge === 'function') {
-    if (typeof currentUser !== 'undefined' && currentUser && currentUser.isLocal) {
-      updateSyncBadge('local-user');
-    } else {
-      updateSyncBadge('local');
-    }
+  // Save words to backend server database (tied to current user account)
+  if (typeof saveWordsToServer === 'function') {
+    saveWordsToServer(words);
+  } else {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
   }
 }
 

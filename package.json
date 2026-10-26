@@ -1,0 +1,13 @@
+{
+  "name": "vocab-master",
+  "version": "1.0.0",
+  "description": "Smart Vocabulary Learning Web App with Multi-User Cloud Sync",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["vocabulary", "learning", "english", "cloud-sync"],
+  "author": "iamphan04",
+  "license": "MIT"
+}
