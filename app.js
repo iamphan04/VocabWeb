@@ -38,21 +38,28 @@ const WORD_TYPES = {
 const STORAGE_KEY = 'vocabmaster_words';
 const IMPORT_KEY  = 'vocab_sheet_imported_v2';
 
+function getUserStorageKey() {
+  if (typeof currentUser !== 'undefined' && currentUser && currentUser.email) {
+    return 'vocab_words_' + currentUser.email.toLowerCase();
+  }
+  return STORAGE_KEY;
+}
+
 function loadWords() {
+  const key = getUserStorageKey();
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(key);
     const hasImported = localStorage.getItem(IMPORT_KEY);
 
-    if (!raw || hasImported !== 'true') {
-      const existing = raw ? JSON.parse(raw) : [];
-      const dummyEns = new Set(['ephemeral', 'serendipity', 'ubiquitous', 'resilient', 'give up', 'break a leg', 'ambiguous']);
-      const customWords = existing.filter(w => !dummyEns.has((w.en || '').toLowerCase()));
-      const defaultList = getDefaultWords();
-      const defaultEnSet = new Set(defaultList.map(w => (w.en || '').toLowerCase()));
-      const wordsToKeep = customWords.filter(w => !defaultEnSet.has((w.en || '').toLowerCase()));
-
-      words = [...defaultList, ...wordsToKeep];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+    if (!raw) {
+      // Check if global STORAGE_KEY has data to copy over for new user
+      const globalRaw = localStorage.getItem(STORAGE_KEY);
+      if (globalRaw && globalRaw !== '[]') {
+        words = JSON.parse(globalRaw);
+      } else {
+        words = getDefaultWords();
+      }
+      localStorage.setItem(key, JSON.stringify(words));
       localStorage.setItem(IMPORT_KEY, 'true');
     } else {
       words = JSON.parse(raw);
@@ -63,7 +70,24 @@ function loadWords() {
 }
 
 function saveWords() {
+  // If cloud user (Firebase)
+  if (typeof currentUser !== 'undefined' && currentUser && !currentUser.isLocal && typeof saveWordsToFirestore === 'function') {
+    saveWordsToFirestore();
+    return;
+  }
+
+  // If local user or guest
+  const key = getUserStorageKey();
+  localStorage.setItem(key, JSON.stringify(words));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+
+  if (typeof updateSyncBadge === 'function') {
+    if (typeof currentUser !== 'undefined' && currentUser && currentUser.isLocal) {
+      updateSyncBadge('local-user');
+    } else {
+      updateSyncBadge('local');
+    }
+  }
 }
 
 function getDefaultWords() {
@@ -797,10 +821,46 @@ styleSheet.textContent = `
 }`;
 document.head.appendChild(styleSheet);
 
+// ── User Dropdown ─────────────────────────────────────────
+function toggleUserDropdown() {
+  const dd = document.getElementById('user-dropdown');
+  if (!dd) return;
+  const isOpen = dd.style.display !== 'none';
+  dd.style.display = isOpen ? 'none' : 'block';
+
+  // Update email display
+  if (!isOpen && typeof currentUser !== 'undefined' && currentUser) {
+    const emailEl = document.getElementById('user-display-email');
+    if (emailEl) emailEl.textContent = currentUser.email || '';
+  }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', e => {
+  const menu = document.querySelector('.user-menu');
+  const dd = document.getElementById('user-dropdown');
+  if (menu && dd && !menu.contains(e.target)) {
+    dd.style.display = 'none';
+  }
+});
+
 // ── Init ──────────────────────────────────────────────────
-loadWords();
-updateStats();
-filterWords();
-setMode('en-to-vi');
-document.getElementById('mode-en').classList.add('selected');
-// updateQuizInfo is called by setMode above
+// Init is deferred — called from auth.js once the user is authenticated
+// If running without auth (e.g. testing), fallback init:
+function initApp() {
+  loadWords();
+  updateStats();
+  filterWords();
+  setMode('en-to-vi');
+  document.getElementById('mode-en').classList.add('selected');
+}
+
+// Fallback: only if auth.js is not included at all
+if (typeof initFirebase === 'undefined' && typeof firebaseConfig === 'undefined') {
+  const loginScr = document.getElementById('login-screen');
+  const appCont = document.getElementById('app-container');
+  if (loginScr) loginScr.style.display = 'none';
+  if (appCont) appCont.style.display = 'block';
+  initApp();
+}
+
