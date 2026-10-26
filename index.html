@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VocabMaster – Học Từ Vựng Tiếng Anh</title>
+  <meta name="description" content="Ứng dụng học từ vựng tiếng Anh thông minh – Thêm, chỉnh sửa, xóa và kiểm tra từ vựng ngay trên trình duyệt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background particles -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <span class="logo-text">VocabMaster</span>
+      </div>
+      <nav class="nav">
+        <button id="nav-vocab" class="nav-btn active" onclick="switchTab('vocab')">
+          <span class="nav-icon">🗂️</span> Từ Vựng
+        </button>
+        <button id="nav-quiz" class="nav-btn" onclick="switchTab('quiz')">
+          <span class="nav-icon">🎯</span> Kiểm Tra
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- ===== VOCAB TAB ===== -->
+    <section id="tab-vocab" class="tab active">
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <span class="stat-num" id="stat-total">0</span>
+          <span class="stat-label">Tổng từ</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="stat-mastered">0</span>
+          <span class="stat-label">Đã thuộc</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="stat-learning">0</span>
+          <span class="stat-label">Đang học</span>
+        </div>
+      </div>
+
+      <!-- Add word form -->
+      <div class="card add-card">
+        <h2 class="card-title">
+          <span id="form-title-icon">✨</span>
+          <span id="form-title-text">Thêm Từ Vựng Mới</span>
+        </h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="input-en">Từ Tiếng Anh *</label>
+            <input id="input-en" class="form-input" type="text" placeholder="e.g. apple" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-vi">Nghĩa Tiếng Việt *</label>
+            <input id="input-vi" class="form-input" type="text" placeholder="e.g. quả táo" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-pronoun">Phiên Âm (IPA)</label>
+            <input id="input-pronoun" class="form-input" type="text" placeholder="e.g. /ˈæp.əl/" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-example">Câu Ví Dụ</label>
+            <input id="input-example" class="form-input" type="text" placeholder="e.g. I eat an apple every day." autocomplete="off" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-type">Loại Từ</label>
+          <select id="input-type" class="form-input form-select-type">
+            <option value="">— Chưa phân loại</option>
+            <option value="n">📌 Danh từ (Noun)</option>
+            <option value="v">⚡ Động từ (Verb)</option>
+            <option value="adj">🎨 Tính từ (Adjective)</option>
+            <option value="adv">💨 Trạng từ (Adverb)</option>
+            <option value="phrasal">🔗 Phrasal Verb</option>
+            <option value="np">🧩 Cụm Danh Từ (Noun Phrase)</option>
+            <option value="idiom">💡 Thành Ngữ (Idiom)</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button id="btn-cancel-edit" class="btn btn-ghost" onclick="cancelEdit()" style="display:none">Huỷ</button>
+          <button id="btn-save" class="btn btn-primary" onclick="saveWord()">
+            <span id="btn-save-icon">➕</span>
+            <span id="btn-save-text">Thêm Từ</span>
+          </button>
+        </div>
+        <div id="form-error" class="form-error" style="display:none"></div>
+      </div>
+
+      <!-- Search & filter -->
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input id="search-input" class="search-input" type="text" placeholder="Tìm kiếm từ vựng..." oninput="filterWords()" />
+        </div>
+        <select id="filter-type" class="filter-select" onchange="filterWords()">
+          <option value="all">📚 Mọi loại</option>
+          <option value="n">📌 Danh từ</option>
+          <option value="v">⚡ Động từ</option>
+          <option value="adj">🎨 Tính từ</option>
+          <option value="adv">💨 Trạng từ</option>
+          <option value="phrasal">🔗 Phrasal Verb</option>
+          <option value="np">🧩 Cụm Danh Từ</option>
+          <option value="idiom">💡 Thành Ngữ</option>
+        </select>
+        <select id="filter-status" class="filter-select" onchange="filterWords()">
+          <option value="all">Tất cả</option>
+          <option value="learning">Đang học</option>
+          <option value="mastered">Đã thuộc</option>
+        </select>
+        <button class="btn btn-danger-outline" onclick="confirmClearAll()" title="Xóa tất cả">🗑️ Xóa hết</button>
+      </div>
+
+      <!-- Word list -->
+      <div id="word-list" class="word-list">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">📖</div>
+          <p>Chưa có từ vựng nào. Hãy thêm từ đầu tiên!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUIZ TAB ===== -->
+    <section id="tab-quiz" class="tab">
+      <div class="quiz-wrapper">
+
+        <!-- Quiz not started -->
+        <div id="quiz-start" class="quiz-start-screen">
+          <div class="quiz-hero-icon">🎯</div>
+          <h2 class="quiz-title">Kiểm Tra Từ Vựng</h2>
+          <p class="quiz-subtitle">Chọn chế độ kiểm tra và bắt đầu!</p>
+
+          <div class="quiz-modes">
+            <label class="mode-card" id="mode-en" onclick="setMode('en-to-vi')">
+              <input type="radio" name="quiz-mode" value="en-to-vi" checked hidden />
+              <span class="mode-icon">🇬🇧→🇻🇳</span>
+              <span class="mode-label">Anh → Việt</span>
+              <span class="mode-desc">Nhìn từ tiếng Anh, đoán nghĩa tiếng Việt</span>
+            </label>
+            <label class="mode-card" id="mode-vi" onclick="setMode('vi-to-en')">
+              <input type="radio" name="quiz-mode" value="vi-to-en" hidden />
+              <span class="mode-icon">🇻🇳→🇬🇧</span>
+              <span class="mode-label">Việt → Anh</span>
+              <span class="mode-desc">Nhìn nghĩa tiếng Việt, đoán từ tiếng Anh</span>
+            </label>
+            <label class="mode-card" id="mode-random" onclick="setMode('random')">
+              <input type="radio" name="quiz-mode" value="random" hidden />
+              <span class="mode-icon">🎲</span>
+              <span class="mode-label">Cả Hai Chiều</span>
+              <span class="mode-desc">Mỗi từ kiểm tra cả Anh→Việt lẫn Việt→Anh</span>
+            </label>
+          </div>
+
+          <!-- Quiz scope & count options -->
+          <div class="quiz-config-grid">
+            <div class="quiz-config-item">
+              <label class="form-label">📅 Phạm vi từ vựng</label>
+              <select id="quiz-scope" class="form-input form-select-type" onchange="updateQuizInfo()">
+                <option value="all">📚 Tất cả từ vựng</option>
+                <option value="today">🌟 Hôm nay mới thêm</option>
+                <option value="old">📖 Từ cũ (trước hôm nay)</option>
+                <option value="learning">🔄 Đang học</option>
+                <option value="mastered">✅ Đã thuộc</option>
+              </select>
+            </div>
+            <div class="quiz-config-item">
+              <label class="form-label">🔢 Số câu hỏi</label>
+              <div class="quiz-count-row">
+                <input
+                  id="quiz-count-input"
+                  class="form-input quiz-count-input"
+                  type="number"
+                  min="1"
+                  max="9999"
+                  value="10"
+                  placeholder="Nhập số câu..."
+                  oninput="updateQuizInfo()"
+                />
+                <button class="chip" onclick="setAllCount(this)">Tất cả</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz info preview -->
+          <div class="quiz-info-bar" id="quiz-info-bar">
+            <span id="quiz-info-text">Sẵn sàng kiểm tra</span>
+          </div>
+
+          <button id="btn-start-quiz" class="btn btn-primary btn-large" onclick="startQuiz()">
+            🚀 Bắt Đầu Kiểm Tra
+          </button>
+          <p id="quiz-warning" class="quiz-warning" style="display:none">⚠️ Không có từ nào trong phạm vi đã chọn!</p>
+        </div>
+
+        <!-- Quiz in progress -->
+        <div id="quiz-game" class="quiz-game" style="display:none">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+          </div>
+          <div class="quiz-meta">
+            <span id="quiz-counter">Câu 1 / 10</span>
+            <span id="quiz-score-live">✅ 0 &nbsp; ❌ 0</span>
+          </div>
+
+          <div class="quiz-card">
+            <div class="quiz-direction-badge" id="quiz-direction-badge">🇬🇧 → 🇻🇳</div>
+            <div class="quiz-question" id="quiz-question">Loading...</div>
+            <div class="quiz-pronoun" id="quiz-pronoun"></div>
+          </div>
+
+          <!-- Typing input area -->
+          <div class="quiz-type-area" id="quiz-type-area">
+            <div class="type-hint" id="type-hint">Nhập câu trả lời của bạn</div>
+            <div class="type-input-wrap">
+              <input
+                id="quiz-type-input"
+                class="type-input"
+                type="text"
+                placeholder="Gõ câu trả lời..."
+                autocomplete="off"
+                autocorrect="off"
+                spellcheck="false"
+              />
+              <button class="btn btn-primary type-submit-btn" id="btn-submit-answer" onclick="submitTypedAnswer()">
+                Kiểm tra ✓
+              </button>
+            </div>
+            <p class="type-skip-hint">Nhấn <kbd>Enter</kbd> để kiểm tra · <kbd>Tab</kbd> để bỏ qua</p>
+          </div>
+
+          <div id="quiz-feedback" class="quiz-feedback" style="display:none">
+            <div id="feedback-icon" class="feedback-icon"></div>
+            <div id="feedback-msg" class="feedback-msg"></div>
+            <div id="feedback-correct" class="feedback-correct"></div>
+            <div id="feedback-example" class="feedback-example"></div>
+            <button class="btn btn-primary" id="btn-next-question" onclick="nextQuestion()">Câu tiếp →</button>
+          </div>
+        </div>
+
+        <!-- Quiz results -->
+        <div id="quiz-result" class="quiz-result" style="display:none">
+          <div class="result-emoji" id="result-emoji"></div>
+          <h2 class="result-title">Kết Quả</h2>
+          <div class="result-score-ring">
+            <svg viewBox="0 0 120 120" class="score-ring-svg">
+              <circle cx="60" cy="60" r="50" class="ring-bg" />
+              <circle cx="60" cy="60" r="50" class="ring-fill" id="ring-fill" />
+            </svg>
+            <div class="result-percent" id="result-percent">0%</div>
+          </div>
+          <div class="result-stats">
+            <div class="result-stat correct">
+              <span class="rs-num" id="rs-correct">0</span>
+              <span class="rs-label">Đúng</span>
+            </div>
+            <div class="result-stat wrong">
+              <span class="rs-num" id="rs-wrong">0</span>
+              <span class="rs-label">Sai</span>
+            </div>
+            <div class="result-stat total">
+              <span class="rs-num" id="rs-total">0</span>
+              <span class="rs-label">Tổng</span>
+            </div>
+          </div>
+          <div id="wrong-list-wrap" class="wrong-list-wrap" style="display:none">
+            <h3 class="wrong-list-title">📝 Từ cần ôn lại:</h3>
+            <div id="wrong-list" class="wrong-list"></div>
+          </div>
+          <div class="result-actions">
+            <button class="btn btn-ghost" onclick="showQuizStart()">⬅ Về Màn Hình Chính</button>
+            <button class="btn btn-primary" onclick="startQuiz()">🔄 Làm Lại</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Edit Modal -->
+  <div id="modal-overlay" class="modal-overlay" style="display:none" onclick="closeModalOnOverlay(event)">
+    <div class="modal" id="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">✏️ Chỉnh Sửa Từ Vựng</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Từ Tiếng Anh *</label>
+          <input id="modal-en" class="form-input" type="text" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nghĩa Tiếng Việt *</label>
+          <input id="modal-vi" class="form-input" type="text" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phiên Âm (IPA)</label>
+          <input id="modal-pronoun" class="form-input" type="text" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Câu Ví Dụ</label>
+          <input id="modal-example" class="form-input" type="text" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Loại Từ</label>
+          <select id="modal-type" class="form-input form-select-type">
+            <option value="">— Chưa phân loại</option>
+            <option value="n">📌 Danh từ (Noun)</option>
+            <option value="v">⚡ Động từ (Verb)</option>
+            <option value="adj">🎨 Tính từ (Adjective)</option>
+            <option value="adv">💨 Trạng từ (Adverb)</option>
+            <option value="phrasal">🔗 Phrasal Verb</option>
+            <option value="np">🧩 Cụm Danh Từ (Noun Phrase)</option>
+            <option value="idiom">💡 Thành Ngữ (Idiom)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal()">Huỷ</button>
+        <button class="btn btn-primary" onclick="saveModalEdit()">💾 Lưu Thay Đổi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <!-- Confirm dialog -->
+  <div id="confirm-overlay" class="modal-overlay" style="display:none">
+    <div class="modal confirm-modal">
+      <div class="confirm-icon">⚠️</div>
+      <h3 id="confirm-title" class="confirm-title"></h3>
+      <p id="confirm-msg" class="confirm-msg"></p>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeConfirm()">Huỷ</button>
+        <button id="confirm-ok" class="btn btn-danger">Xác Nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
