@@ -533,6 +533,8 @@ function loadQuestion() {
   inp.dataset.wordId = current.id;
 
   document.getElementById('btn-submit-answer').disabled = false;
+  const skipBtn = document.getElementById('btn-skip-answer');
+  if (skipBtn) skipBtn.disabled = false;
   document.getElementById('quiz-feedback').style.display = 'none';
 
   // Auto-focus input
@@ -562,6 +564,8 @@ function submitTypedAnswer() {
   inp.classList.add(ok ? 'correct' : 'wrong');
   inp.disabled = true;
   document.getElementById('btn-submit-answer').disabled = true;
+  const skipBtn = document.getElementById('btn-skip-answer');
+  if (skipBtn) skipBtn.disabled = true;
 
   if (ok) { quizCorrect++; } else { quizWrong++; wrongWords.push(word); }
 
@@ -578,6 +582,36 @@ function submitTypedAnswer() {
   document.getElementById('quiz-score-live').innerHTML = `✅ ${quizCorrect} &nbsp; ❌ ${quizWrong}`;
 
   // Focus next button
+  setTimeout(() => document.getElementById('btn-next-question').focus(), 100);
+}
+
+function skipTypedAnswer() {
+  const inp = document.getElementById('quiz-type-input');
+  if (!inp || inp.disabled) return;
+
+  inp.value = '';
+  const correct = inp.dataset.answer;
+  const wordId  = inp.dataset.wordId;
+  const word    = words.find(w => w.id === wordId) || quizQueue[quizIndex];
+
+  inp.classList.add('wrong');
+  inp.disabled = true;
+  document.getElementById('btn-submit-answer').disabled = true;
+  const skipBtn = document.getElementById('btn-skip-answer');
+  if (skipBtn) skipBtn.disabled = true;
+
+  quizWrong++;
+  wrongWords.push(word);
+
+  const feedback = document.getElementById('quiz-feedback');
+  feedback.style.display = 'flex';
+  document.getElementById('feedback-icon').textContent = '⏭️';
+  document.getElementById('feedback-msg').textContent  = 'Đã bỏ qua câu này';
+  const correctEl = document.getElementById('feedback-correct');
+  correctEl.textContent = `Đáp án đúng: ${correct}`;
+  document.getElementById('feedback-example').textContent = word && word.example ? `💬 ${word.example}` : '';
+  document.getElementById('quiz-score-live').innerHTML = `✅ ${quizCorrect} &nbsp; ❌ ${quizWrong}`;
+
   setTimeout(() => document.getElementById('btn-next-question').focus(), 100);
 }
 
@@ -733,31 +767,23 @@ document.addEventListener('keydown', e => {
       // Tab = skip (mark wrong, move on)
       if (e.key === 'Tab') {
         e.preventDefault();
-        if (inp && !inp.disabled) {
-          inp.value = ''; // force empty → will trigger wrong path
-          // Directly mark as wrong and skip
-          const correct = inp.dataset.answer;
-          const wordId  = inp.dataset.wordId;
-          const word    = words.find(w => w.id === wordId) || quizQueue[quizIndex];
-          inp.classList.add('wrong');
-          inp.disabled = true;
-          document.getElementById('btn-submit-answer').disabled = true;
-          quizWrong++;
-          wrongWords.push(word);
-          const feedback = document.getElementById('quiz-feedback');
-          feedback.style.display = 'flex';
-          document.getElementById('feedback-icon').textContent = '⏭️';
-          document.getElementById('feedback-msg').textContent  = 'Đã bỏ qua câu này';
-          const correctEl = document.getElementById('feedback-correct');
-          correctEl.textContent = `Đáp án đúng: ${correct}`;
-          document.getElementById('feedback-example').textContent = word && word.example ? `💬 ${word.example}` : '';
-          document.getElementById('quiz-score-live').innerHTML = `✅ ${quizCorrect} &nbsp; ❌ ${quizWrong}`;
-          setTimeout(() => document.getElementById('btn-next-question').focus(), 100);
-        }
+        skipTypedAnswer();
       }
     }
   }
 });
+
+// Back to top floating button scroll listener
+window.addEventListener('scroll', () => {
+  const btt = document.getElementById('btn-back-to-top');
+  if (btt) {
+    if (window.scrollY > 280) {
+      btt.classList.add('visible');
+    } else {
+      btt.classList.remove('visible');
+    }
+  }
+}, { passive: true });
 
 // Shake animation for empty submit
 const styleSheet = document.createElement('style');

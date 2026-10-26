@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>VocabMaster – Học Từ Vựng Tiếng Anh</title>
   <meta name="description" content="Ứng dụng học từ vựng tiếng Anh thông minh – Thêm, chỉnh sửa, xóa và kiểm tra từ vựng ngay trên trình duyệt." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -157,20 +157,26 @@
             <label class="mode-card" id="mode-en" onclick="setMode('en-to-vi')">
               <input type="radio" name="quiz-mode" value="en-to-vi" checked hidden />
               <span class="mode-icon">🇬🇧→🇻🇳</span>
-              <span class="mode-label">Anh → Việt</span>
-              <span class="mode-desc">Nhìn từ tiếng Anh, đoán nghĩa tiếng Việt</span>
+              <div class="mode-text">
+                <span class="mode-label">Anh → Việt</span>
+                <span class="mode-desc">Nhìn từ tiếng Anh, đoán nghĩa tiếng Việt</span>
+              </div>
             </label>
             <label class="mode-card" id="mode-vi" onclick="setMode('vi-to-en')">
               <input type="radio" name="quiz-mode" value="vi-to-en" hidden />
               <span class="mode-icon">🇻🇳→🇬🇧</span>
-              <span class="mode-label">Việt → Anh</span>
-              <span class="mode-desc">Nhìn nghĩa tiếng Việt, đoán từ tiếng Anh</span>
+              <div class="mode-text">
+                <span class="mode-label">Việt → Anh</span>
+                <span class="mode-desc">Nhìn nghĩa tiếng Việt, đoán từ tiếng Anh</span>
+              </div>
             </label>
             <label class="mode-card" id="mode-random" onclick="setMode('random')">
               <input type="radio" name="quiz-mode" value="random" hidden />
               <span class="mode-icon">🎲</span>
-              <span class="mode-label">Cả Hai Chiều</span>
-              <span class="mode-desc">Mỗi từ kiểm tra cả Anh→Việt lẫn Việt→Anh</span>
+              <div class="mode-text">
+                <span class="mode-label">Cả Hai Chiều</span>
+                <span class="mode-desc">Mỗi từ kiểm tra cả Anh→Việt lẫn Việt→Anh</span>
+              </div>
             </label>
           </div>
 
@@ -244,11 +250,16 @@
                 autocorrect="off"
                 spellcheck="false"
               />
-              <button class="btn btn-primary type-submit-btn" id="btn-submit-answer" onclick="submitTypedAnswer()">
-                Kiểm tra ✓
-              </button>
+              <div class="type-btn-group">
+                <button type="button" class="btn btn-ghost type-skip-btn" id="btn-skip-answer" onclick="skipTypedAnswer()" title="Bỏ qua câu này">
+                  Bỏ qua ⏭️
+                </button>
+                <button type="button" class="btn btn-primary type-submit-btn" id="btn-submit-answer" onclick="submitTypedAnswer()">
+                  Kiểm tra ✓
+                </button>
+              </div>
             </div>
-            <p class="type-skip-hint">Nhấn <kbd>Enter</kbd> để kiểm tra · <kbd>Tab</kbd> để bỏ qua</p>
+            <p class="type-skip-hint">Nhấn <kbd>Enter</kbd> để kiểm tra · <kbd>Tab</kbd> hoặc bấm <b>Bỏ qua</b></p>
           </div>
 
           <div id="quiz-feedback" class="quiz-feedback" style="display:none">
@@ -361,6 +372,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="btn-back-to-top" class="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Lên đầu trang" title="Lên đầu trang">
+    ↑
+  </button>
 
   <script src="default_vocab.js"></script>
   <script src="app.js"></script>
