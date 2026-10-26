@@ -4,6 +4,33 @@
 
 ---
 
+## [1.3.0] – 2026-10-26
+
+### 🔄 Changed
+- **Danh sách Từ Vựng (Vocabulary Tab)**
+  - Đảo ngược thứ tự hiển thị danh sách từ: các từ thêm sau sẽ xuất hiện ở trên cùng (#1) để tiện theo dõi từ mới học.
+
+---
+
+## [1.2.0] – 2026-10-25
+
+### ✨ Added
+- **Phân loại từ (Word Type)**
+  - Hỗ trợ các loại từ: Danh từ, Động từ, Tính từ, Trạng từ, Phrasal Verb, Cụm Danh Từ, Thành Ngữ, Collocation
+  - Dropdown chọn loại từ trong form thêm từ và modal chỉnh sửa
+  - Hiển thị badge màu tương ứng cạnh từ vựng
+  - Bộ lọc danh sách từ theo loại từ trong toolbar
+
+---
+
+## [1.1.0] – 2026-10-25
+
+### 🎨 Changed
+- Đổi giao diện quiz từ trắc nghiệm sang chế độ gõ từ (type-to-answer)
+- Đổi chủ đề màu sang tone hồng (pink theme)
+
+---
+
 ## [1.0.0] – 2026-10-25
 
 ### ✨ Added

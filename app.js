@@ -154,7 +154,7 @@ function filterWords() {
   const q      = document.getElementById('search-input').value.toLowerCase().trim();
   const status = document.getElementById('filter-status').value;
   const type   = document.getElementById('filter-type').value;
-  let list = [...words];
+  let list = [...words].reverse();
 
   if (status === 'learning') {
     list = list.filter(w => w.status === 'learning');
