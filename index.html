@@ -78,6 +78,16 @@
             👤 Dùng thử không cần tài khoản (Lưu offline)
           </button>
         </div>
+
+        <!-- Server Connection Status & Quick Select Account -->
+        <div id="auth-server-info" class="auth-server-info">
+          <div class="server-status-line">
+            <span id="server-status-dot" class="server-dot online"></span>
+            <span id="server-status-label">Máy chủ: Đang kết nối...</span>
+            <button type="button" class="btn-server-edit" onclick="openServerConfigModal()" title="Cài đặt địa chỉ máy chủ">⚙️ Đổi</button>
+          </div>
+          <div id="auth-known-accounts" class="auth-known-accounts" style="display:none"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -98,6 +108,9 @@
         </button>
         <button id="nav-quiz" class="nav-btn" onclick="switchTab('quiz')">
           <span class="nav-icon">🎯</span> Kiểm Tra
+        </button>
+        <button id="nav-mobile" class="nav-btn nav-btn-mobile" onclick="openMobileConnectModal()" title="Mở trên điện thoại (Mã QR)">
+          <span class="nav-icon">📱</span> Điện Thoại
         </button>
         <button id="nav-theme" class="nav-btn" onclick="openThemeModal()" title="Cài đặt giao diện & Màu sắc">
           <span class="nav-icon">🎨</span> Theme
@@ -499,6 +512,77 @@
       <div class="modal-footer">
         <button class="btn btn-ghost" onclick="resetThemeDefault()">↺ Mặc Định</button>
         <button class="btn btn-primary" onclick="closeThemeModal()">✓ Hoàn Tất</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Mobile QR Connect -->
+  <div id="mobile-connect-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this) closeMobileConnectModal()">
+    <div class="modal modal-mobile-connect">
+      <div class="modal-header">
+        <h3 class="modal-title">📱 Mở & Đồng Bộ Trên Điện Thoại</h3>
+        <button class="modal-close" onclick="closeMobileConnectModal()">✕</button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="qr-card">
+          <div id="qr-loading" class="qr-loading" style="display:none">
+            <span class="spinner"></span> Đang tạo mã kết nối...
+          </div>
+          <div id="qr-code-container" class="qr-code-container">
+            <img id="qr-code-img" src="" alt="Mã QR kết nối điện thoại" class="qr-img" />
+          </div>
+          <p id="qr-auto-login-badge" class="qr-badge-success" style="display:none">
+            ⚡ Quét để tự động đăng nhập không cần gõ mật khẩu
+          </p>
+        </div>
+
+        <div class="connect-steps">
+          <div class="connect-step">
+            <span class="step-num">1</span>
+            <span>Bật Wi-Fi điện thoại kết nối <b>cùng mạng Wi-Fi</b> với máy tính.</span>
+          </div>
+          <div class="connect-step">
+            <span class="step-num">2</span>
+            <span>Mở <b>Camera điện thoại</b> (hoặc Zalo) để quét mã QR bên trên.</span>
+          </div>
+          <div class="connect-step">
+            <span class="step-num">3</span>
+            <span>Hoặc mở trình duyệt (Safari/Chrome) gõ địa chỉ bên dưới:</span>
+          </div>
+        </div>
+
+        <div class="connect-url-box">
+          <input type="text" id="mobile-connect-url-input" class="connect-url-input" readonly />
+          <button type="button" class="btn btn-secondary btn-copy-url" onclick="copyConnectUrl()">📋 Sao chép</button>
+        </div>
+
+        <div id="mobile-account-hint" class="mobile-account-hint"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeMobileConnectModal()">Đã Hiểu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Server IP Config -->
+  <div id="server-config-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this) closeServerConfigModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">⚙️ Cài Đặt Địa Chỉ Máy Chủ (Server URL)</h3>
+        <button class="modal-close" onclick="closeServerConfigModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="server-config-desc">
+          Mặc định VocabMaster tự động phát hiện địa chỉ máy chủ. Bạn có thể tự đổi nếu mở web từ Live Server hoặc thiết bị khác:
+        </p>
+        <div class="auth-field">
+          <label class="form-label" for="custom-server-input">Địa chỉ Server (Ví dụ: http://192.168.0.43:5000)</label>
+          <input id="custom-server-input" class="form-input" type="text" placeholder="http://192.168.0.43:5000" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="resetServerConfig()">↺ Mặc định</button>
+        <button class="btn btn-primary" onclick="saveServerConfig()">Lưu & Thử Lại</button>
       </div>
     </div>
   </div>

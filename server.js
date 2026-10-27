@@ -1,6 +1,7 @@
 /* ========================================================
    VocabMaster – Node.js Backend Server & Database
    Zero external dependencies (uses built-in http, fs, crypto)
+   Supports Multi-User & Multi-Device Synchronous Access
    ======================================================== */
 
 const http = require('http');
@@ -15,14 +16,18 @@ const DB_FILE = path.join(__dirname, 'database.json');
 // Initialize JSON database
 function getDb() {
   if (!fs.existsSync(DB_FILE)) {
-    const initial = { users: [], userWords: {} };
+    const initial = { users: [], userWords: {}, tokens: {} };
     fs.writeFileSync(DB_FILE, JSON.stringify(initial, null, 2), 'utf8');
     return initial;
   }
   try {
-    return JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
+    const data = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
+    if (!data.users) data.users = [];
+    if (!data.userWords) data.userWords = {};
+    if (!data.tokens) data.tokens = {};
+    return data;
   } catch {
-    return { users: [], userWords: {} };
+    return { users: [], userWords: {}, tokens: {} };
   }
 }
 
@@ -56,7 +61,7 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  // CORS
+  // CORS for cross-device access (phones, laptops on same Wi-Fi)
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -101,10 +106,32 @@ const server = http.createServer((req, res) => {
     const token = getToken();
     if (!token) return null;
     const db = getDb();
+
+    // Check multi-device tokens map
+    if (db.tokens && db.tokens[token]) {
+      const userId = db.tokens[token].userId;
+      const user = db.users.find(u => String(u.id) === String(userId));
+      if (user) return user;
+    }
+
+    // Fallback to legacy single token
     return db.users.find(u => u.token === token) || null;
   };
 
-  // ── API ROUTES ──
+  // ── GET /api/info (Network IP and Registered Accounts) ──
+  if (pathname === '/api/info' && req.method === 'GET') {
+    const localIp = getLocalIp();
+    const db = getDb();
+    const accounts = db.users.map(u => ({ email: u.email, name: u.name }));
+    return sendJson(200, {
+      local_ip: localIp,
+      port: PORT,
+      server_url: `http://${localIp}:${PORT}`,
+      accounts
+    });
+  }
+
+  // ── POST /api/auth/register ──
   if (pathname === '/api/auth/register' && req.method === 'POST') {
     return readJson((err, data) => {
       if (err) return sendJson(400, { error: 'Dữ liệu JSON không hợp lệ!' });
@@ -116,8 +143,8 @@ const server = http.createServer((req, res) => {
       if (password.length < 6) return sendJson(400, { error: 'Mật khẩu phải có ít nhất 6 ký tự!' });
 
       const db = getDb();
-      if (db.users.find(u => u.email === email)) {
-        return sendJson(400, { error: 'Email này đã được đăng ký! Vui lòng đăng nhập.' });
+      if (db.users.some(u => (u.email || '').toLowerCase() === email)) {
+        return sendJson(400, { error: `Email "${email}" đã được đăng ký! Vui lòng chọn Đăng Nhập.` });
       }
 
       const salt = crypto.randomBytes(16).toString('hex');
@@ -130,11 +157,18 @@ const server = http.createServer((req, res) => {
         id: userId,
         email,
         name: displayName,
+        password_hash: pwHash,
         passwordHash: pwHash,
         salt,
         token,
         createdAt: new Date().toISOString()
       });
+
+      if (!db.tokens) db.tokens = {};
+      db.tokens[token] = {
+        userId,
+        createdAt: new Date().toISOString()
+      };
 
       db.userWords[userId] = {
         words: data.initialWords || [],
@@ -149,6 +183,7 @@ const server = http.createServer((req, res) => {
     });
   }
 
+  // ── POST /api/auth/login ──
   if (pathname === '/api/auth/login' && req.method === 'POST') {
     return readJson((err, data) => {
       if (err) return sendJson(400, { error: 'Dữ liệu JSON không hợp lệ!' });
@@ -158,16 +193,28 @@ const server = http.createServer((req, res) => {
       if (!email || !password) return sendJson(400, { error: 'Vui lòng nhập email và mật khẩu!' });
 
       const db = getDb();
-      const user = db.users.find(u => u.email === email);
-      if (!user) return sendJson(400, { error: 'Không tìm thấy tài khoản với email này! Bạn hãy bấm Đăng ký ngay.' });
+      const user = db.users.find(u => (u.email || '').toLowerCase() === email);
+      if (!user) {
+        return sendJson(400, {
+          error: `Không tìm thấy tài khoản với email "${email}"! Vui lòng kiểm tra lại chính tả hoặc xem danh sách tài khoản hiển thị trên màn hình server.`
+        });
+      }
 
+      const userHash = user.password_hash || user.passwordHash;
       const expectedHash = hashPassword(password, user.salt);
-      if (expectedHash !== user.passwordHash) {
+      if (expectedHash !== userHash) {
         return sendJson(400, { error: 'Mật khẩu không chính xác! Vui lòng thử lại.' });
       }
 
+      // Generate a new multi-device session token
       const token = crypto.randomBytes(32).toString('hex');
       user.token = token;
+      if (!db.tokens) db.tokens = {};
+      db.tokens[token] = {
+        userId: user.id,
+        createdAt: new Date().toISOString()
+      };
+
       saveDb(db);
 
       sendJson(200, {
@@ -177,30 +224,64 @@ const server = http.createServer((req, res) => {
     });
   }
 
-  if (pathname === '/api/auth/me' && req.method === 'GET') {
+  // ── POST /api/auth/qr-token ──
+  if (pathname === '/api/auth/qr-token' && req.method === 'POST') {
     const user = getUserByToken();
-    if (!user) return sendJson(401, { error: 'Chưa đăng nhập!' });
-    return sendJson(200, { user: { id: user.id, email: user.email, name: user.name } });
-  }
+    if (!user) return sendJson(401, { error: 'Vui lòng đăng nhập để tạo mã kết nối!' });
 
-  if (pathname === '/api/words' && req.method === 'GET') {
-    const user = getUserByToken();
-    if (!user) return sendJson(401, { error: 'Vui lòng đăng nhập để xem từ vựng!' });
-
+    const mobileToken = crypto.randomBytes(32).toString('hex');
     const db = getDb();
-    const userWordData = db.userWords[user.id] || { words: [], updatedAt: null };
+    if (!db.tokens) db.tokens = {};
+    db.tokens[mobileToken] = {
+      userId: user.id,
+      createdAt: new Date().toISOString()
+    };
+    saveDb(db);
+
+    const localIp = getLocalIp();
     return sendJson(200, {
-      words: userWordData.words || [],
-      updated_at: userWordData.updatedAt
+      connect_url: `http://${localIp}:${PORT}?autoLoginToken=${mobileToken}`,
+      token: mobileToken,
+      user: { id: user.id, email: user.email, name: user.name }
     });
   }
 
-  if (pathname === '/api/words' && (req.method === 'POST' || req.method === 'PUT')) {
+  // ── GET /api/auth/me ──
+  if (pathname === '/api/auth/me' && req.method === 'GET') {
+    const user = getUserByToken();
+    if (!user) return sendJson(401, { error: 'Chưa đăng nhập hoặc phiên làm việc hết hạn!' });
+    return sendJson(200, { user: { id: user.id, email: user.email, name: user.name } });
+  }
+
+  // ── GET /api/words ──
+  if (pathname === '/api/words' && req.method === 'GET') {
+    const user = getUserByToken();
+    if (!user) return sendJson(401, { error: 'Vui lòng đăng nhập để xem danh sách từ vựng!' });
+
+    const db = getDb();
+    const entry = db.userWords[user.id];
+    let words = [];
+    let updatedAt = null;
+
+    if (entry) {
+      if (Array.isArray(entry)) words = entry;
+      else if (Array.isArray(entry.words)) words = entry.words;
+      else if (typeof entry === 'string') {
+        try { words = JSON.parse(entry); } catch { words = []; }
+      }
+      updatedAt = entry.updatedAt || null;
+    }
+
+    return sendJson(200, { words, updated_at: updatedAt });
+  }
+
+  // ── POST /api/words ──
+  if (pathname === '/api/words' && req.method === 'POST') {
     const user = getUserByToken();
     if (!user) return sendJson(401, { error: 'Vui lòng đăng nhập để lưu từ vựng!' });
 
     return readJson((err, data) => {
-      if (err || !Array.isArray(data.words)) return sendJson(400, { error: 'Danh sách từ vựng không hợp lệ!' });
+      if (err || !Array.isArray(data.words)) return sendJson(400, { error: 'Dữ liệu từ vựng không hợp lệ!' });
 
       const db = getDb();
       db.userWords[user.id] = {
@@ -209,52 +290,73 @@ const server = http.createServer((req, res) => {
       };
       saveDb(db);
 
-      return sendJson(200, {
+      sendJson(200, {
         success: true,
         count: data.words.length,
-        message: 'Đã lưu từ vựng thành công vào tài khoản!'
+        message: 'Đã lưu từ vựng thành công!'
       });
     });
   }
 
+  // ── POST /api/auth/logout ──
   if (pathname === '/api/auth/logout' && req.method === 'POST') {
     const token = getToken();
     if (token) {
       const db = getDb();
-      const user = db.users.find(u => u.token === token);
-      if (user) {
-        user.token = null;
+      if (db.tokens && db.tokens[token]) {
+        delete db.tokens[token];
         saveDb(db);
       }
     }
     return sendJson(200, { success: true });
   }
 
-  // ── STATIC FILE SERVING ──
-  let safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
-  if (safePath === '/' || safePath === '\\') safePath = '/index.html';
-  const filePath = path.join(__dirname, safePath);
+  // ── Static Files ──
+  let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      return res.end('404 Not Found');
+      filePath = path.join(__dirname, 'index.html');
     }
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': contentType });
-    fs.createReadStream(filePath).pipe(res);
+
+    fs.readFile(filePath, (readErr, content) => {
+      if (readErr) {
+        res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+        return res.end('500 Lỗi máy chủ khi đọc file.');
+      }
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(content);
+    });
   });
 });
 
 server.listen(PORT, '0.0.0.0', () => {
   const localIp = getLocalIp();
-  console.log('='.repeat(60));
-  console.log('  📚 VocabMaster Node.js Server Đã Sẵn Sàng!');
-  console.log('='.repeat(60));
-  console.log(`  ➜ Trên máy tính này:  http://localhost:${PORT}`);
-  console.log(`  ➜ Trên điện thoại:    http://${localIp}:${PORT}`);
-  console.log(`  ➜ Database file:      database.json`);
-  console.log('='.repeat(60));
+  const db = getDb();
+  console.log('='.repeat(64));
+  console.log('  📚 VocabMaster Backend Server & Database Đã Khởi Động!');
+  console.log('='.repeat(64));
+  console.log(`  ➜ Mở trên máy tính này:      http://localhost:${PORT}`);
+  console.log(`  ➜ Mở trên điện thoại/tablet:  http://${localIp}:${PORT}`);
+  console.log(`  ➜ Database lưu trữ:          database.json`);
+  console.log('-'.repeat(64));
+  console.log('  📋 Danh Sách Tài Khoản Đã Đăng Ký Sẵn:');
+  if (db.users && db.users.length > 0) {
+    db.users.forEach(u => {
+      console.log(`     • Email: ${u.email.padEnd(24)} (Tên: ${u.name})`);
+    });
+  } else {
+    console.log('     (Chưa có tài khoản nào. Hãy tạo tài khoản đầu tiên!)');
+  }
+  console.log('='.repeat(64));
+  console.log('  💡 HƯỚNG DẪN MỞ TRÊN ĐIỆN THOẠI / THIẾT BỊ KHÁC:');
+  console.log('     1. Kết nối điện thoại chung mạng Wi-Fi với máy tính này.');
+  console.log(`     2. Mở trình duyệt (Safari/Chrome), truy cập: http://${localIp}:${PORT}`);
+  console.log('     3. Hoặc bấm "📱 Điện Thoại" trên thanh công cụ web để quét mã QR.');
+  console.log('     4. Đăng nhập đúng email ở trên (mật khẩu bạn đã đặt).');
+  console.log('='.repeat(64));
+  console.log('  Nhấn Ctrl + C để dừng server.\n');
 });

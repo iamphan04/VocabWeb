@@ -3,21 +3,35 @@
    Backend Database Authentication & Vocabulary Sync
    ──────────────────────────────────────────────────────────
    Dữ liệu tài khoản & từ vựng được lưu trữ trực tiếp trên
-   Database của Server (SQLite/JSON), không lưu cục bộ theo máy.
+   Database của Server (SQLite/JSON), hỗ trợ đa thiết bị cùng lúc.
    Người dùng đăng nhập trên bất kỳ thiết bị nào (điện thoại, máy tính)
    đều sẽ nhận đúng bộ từ vựng thuộc về tài khoản đó.
    ======================================================== */
 
-// Determine Backend API Base URL
-const API_BASE = (window.location.protocol.startsWith('http'))
-  ? window.location.origin
-  : 'http://localhost:5000';
-
 const AUTH_TOKEN_KEY = 'vocabmaster_auth_token';
 const AUTH_USER_KEY  = 'vocabmaster_auth_user';
+const CUSTOM_API_KEY = 'vocabmaster_custom_api_base';
 
+// Determine Backend API Base URL
+function getApiBase() {
+  const custom = localStorage.getItem(CUSTOM_API_KEY);
+  if (custom) return custom.replace(/\/+$/, '');
+
+  if (window.location.protocol.startsWith('http')) {
+    // If running directly on port 5000, or deployed to a standard cloud host (port 80/443)
+    if (window.location.port === '5000' || !window.location.port) {
+      return window.location.origin;
+    }
+    // If opened via VS Code Live Server (port 5500, 3000, etc.), connect to port 5000 on the same host/IP!
+    return `${window.location.protocol}//${window.location.hostname}:5000`;
+  }
+  return 'http://localhost:5000';
+}
+
+let API_BASE = getApiBase();
 let currentUser = null;
 let isGuestMode = false;
+let serverInfo = null;
 
 // ── Token & Session Management ────────────────────────────
 function getStoredToken() {
@@ -44,6 +58,7 @@ function showLoginScreen() {
   if (loginScr) loginScr.style.display = 'flex';
   if (appCont)  appCont.style.display  = 'none';
   clearAuthForms();
+  fetchServerInfo();
 }
 
 function showApp() {
@@ -94,6 +109,9 @@ function updateUserDisplay() {
 
     if (actionsEl) {
       actionsEl.innerHTML = `
+        <button class="user-dropdown-item primary-accent" onclick="openMobileConnectModal(); toggleUserDropdown();">
+          📱 Kết Nối Điện Thoại (Mã QR)
+        </button>
         <button class="user-dropdown-item" onclick="openThemeModal(); toggleUserDropdown();">
           🎨 Tùy Chỉnh Màu Theme
         </button>
@@ -113,6 +131,9 @@ function updateUserDisplay() {
     }
     if (actionsEl) {
       actionsEl.innerHTML = `
+        <button class="user-dropdown-item primary-accent" onclick="openMobileConnectModal(); toggleUserDropdown();">
+          📱 Mở Trên Điện Thoại
+        </button>
         <button class="user-dropdown-item" onclick="openThemeModal(); toggleUserDropdown();">
           🎨 Tùy Chỉnh Màu Theme
         </button>
@@ -193,14 +214,65 @@ function toggleAuthMode() {
   hideAuthError();
 }
 
+// ── Server Info & Quick Email Fill ───────────────────────
+async function fetchServerInfo() {
+  const dotEl = document.getElementById('server-status-dot');
+  const labelEl = document.getElementById('server-status-label');
+  const accountsEl = document.getElementById('auth-known-accounts');
+
+  try {
+    const res = await fetch(`${API_BASE}/api/info`);
+    if (res.ok) {
+      serverInfo = await res.json();
+      if (dotEl) {
+        dotEl.className = 'server-dot online';
+      }
+      if (labelEl) {
+        const displayHost = serverInfo.server_url || API_BASE;
+        labelEl.textContent = `Máy chủ online: ${displayHost}`;
+      }
+
+      // If registered accounts exist, show them as helpful quick-click chips
+      if (accountsEl && Array.isArray(serverInfo.accounts) && serverInfo.accounts.length > 0) {
+        accountsEl.style.display = 'block';
+        const chipsHtml = serverInfo.accounts.map(acc => {
+          return `<span class="known-acc-chip" onclick="fillAuthEmail('${acc.email}')" title="Bấm để tự điền email này">👤 ${acc.email}</span>`;
+        }).join('');
+        accountsEl.innerHTML = `<span style="display:block; margin-bottom:4px">💡 Tài khoản đã có trên máy chủ:</span> ${chipsHtml}`;
+      }
+    } else {
+      setServerOfflineStatus();
+    }
+  } catch (e) {
+    setServerOfflineStatus();
+  }
+}
+
+function setServerOfflineStatus() {
+  const dotEl = document.getElementById('server-status-dot');
+  const labelEl = document.getElementById('server-status-label');
+  if (dotEl) dotEl.className = 'server-dot offline';
+  if (labelEl) labelEl.textContent = `Chưa kết nối server (${API_BASE})`;
+}
+
+function fillAuthEmail(email) {
+  const input = document.getElementById('auth-email');
+  if (input) {
+    input.value = email;
+    input.focus();
+    const pwInput = document.getElementById('auth-password');
+    if (pwInput) pwInput.focus();
+  }
+}
+
 // ── Submit Registration / Login ──────────────────────────
 async function handleAuthSubmit(e) {
   if (e) e.preventDefault();
 
   const container = document.getElementById('auth-form-container');
   const mode      = container.dataset.mode || 'login';
-  const email     = document.getElementById('auth-email').value.trim();
-  const password  = document.getElementById('auth-password').value;
+  const email     = (document.getElementById('auth-email')?.value || '').trim().toLowerCase();
+  const password  = document.getElementById('auth-password')?.value || '';
   const name      = (document.getElementById('auth-name')?.value || '').trim();
   const confirmPw = document.getElementById('auth-confirm-password')?.value || '';
 
@@ -268,7 +340,7 @@ async function handleAuthSubmit(e) {
   } catch (err) {
     console.error('Auth error:', err);
     if (err.message && err.message.includes('Failed to fetch')) {
-      showAuthError('⚠️ Không thể kết nối tới Server Database! Vui lòng nhấp đúp vào file "start_server.bat" để khởi động server.');
+      showAuthError(`⚠️ Không thể kết nối tới Server Database (${API_BASE})! Vui lòng nhấp đúp file "start_server.bat" trên máy tính để khởi động server.`);
     } else {
       showAuthError(err.message || 'Lỗi đăng nhập, vui lòng thử lại!');
     }
@@ -373,6 +445,149 @@ function loadWordsFromLocalStorage() {
   }
 }
 
+// ── Mobile Connect Modal & QR Code ────────────────────────
+async function openMobileConnectModal() {
+  const modal = document.getElementById('mobile-connect-modal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+
+  const loadingEl = document.getElementById('qr-loading');
+  const qrImg = document.getElementById('qr-code-img');
+  const badgeEl = document.getElementById('qr-auto-login-badge');
+  const urlInput = document.getElementById('mobile-connect-url-input');
+  const hintEl = document.getElementById('mobile-account-hint');
+
+  if (loadingEl) loadingEl.style.display = 'block';
+  if (qrImg) qrImg.style.display = 'none';
+
+  let targetUrl = API_BASE;
+  let hasAutoLogin = false;
+
+  // If user is currently logged in, generate quick-connect token with auto-login!
+  const token = getStoredToken();
+  if (token && currentUser) {
+    try {
+      const res = await fetch(`${API_BASE}/api/auth/qr-token`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        targetUrl = data.connect_url;
+        hasAutoLogin = true;
+      }
+    } catch (e) {
+      console.warn('Could not generate mobile qr token:', e);
+    }
+  }
+
+  // Fallback to server info if targetUrl is localhost
+  if (!hasAutoLogin) {
+    if (serverInfo && serverInfo.server_url) {
+      targetUrl = serverInfo.server_url;
+    } else {
+      try {
+        const res = await fetch(`${API_BASE}/api/info`);
+        if (res.ok) {
+          const info = await res.json();
+          targetUrl = info.server_url;
+        }
+      } catch (e) {}
+    }
+  }
+
+  if (urlInput) urlInput.value = targetUrl;
+
+  if (badgeEl) {
+    badgeEl.style.display = hasAutoLogin ? 'block' : 'none';
+  }
+
+  if (hintEl) {
+    if (currentUser) {
+      hintEl.innerHTML = `✅ Điện thoại sẽ đồng bộ toàn bộ từ vựng với tài khoản: <b>${currentUser.email}</b>`;
+    } else {
+      hintEl.innerHTML = `💡 Chưa đăng nhập tài khoản. Bạn có thể đăng ký tài khoản trên máy tính để từ vựng tự đồng bộ sang điện thoại!`;
+    }
+  }
+
+  // Generate QR Code via reliable high-speed QR API
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=${encodeURIComponent(targetUrl)}`;
+  
+  if (qrImg) {
+    qrImg.onload = () => {
+      if (loadingEl) loadingEl.style.display = 'none';
+      qrImg.style.display = 'block';
+    };
+    qrImg.onerror = () => {
+      if (loadingEl) loadingEl.style.display = 'none';
+      qrImg.style.display = 'block';
+      // Fallback: render text link inside container
+    };
+    qrImg.src = qrUrl;
+  }
+}
+
+function closeMobileConnectModal() {
+  const modal = document.getElementById('mobile-connect-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+function copyConnectUrl() {
+  const input = document.getElementById('mobile-connect-url-input');
+  if (!input) return;
+  input.select();
+  navigator.clipboard.writeText(input.value).then(() => {
+    if (typeof showToast === 'function') {
+      showToast('📋 Đã sao chép link truy cập điện thoại!', 'success');
+    }
+  }).catch(() => {
+    document.execCommand('copy');
+    if (typeof showToast === 'function') {
+      showToast('📋 Đã sao chép link!', 'success');
+    }
+  });
+}
+
+// ── Server Config Modal ──────────────────────────────────
+function openServerConfigModal() {
+  const modal = document.getElementById('server-config-modal');
+  const input = document.getElementById('custom-server-input');
+  if (modal) modal.style.display = 'flex';
+  if (input) input.value = API_BASE;
+}
+
+function closeServerConfigModal() {
+  const modal = document.getElementById('server-config-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+function saveServerConfig() {
+  const input = document.getElementById('custom-server-input');
+  const val = (input?.value || '').trim().replace(/\/+$/, '');
+  if (!val) {
+    resetServerConfig();
+    return;
+  }
+
+  localStorage.setItem(CUSTOM_API_KEY, val);
+  API_BASE = val;
+  closeServerConfigModal();
+  if (typeof showToast === 'function') {
+    showToast(`Đã lưu Server: ${API_BASE}`, 'info');
+  }
+  fetchServerInfo();
+}
+
+function resetServerConfig() {
+  localStorage.removeItem(CUSTOM_API_KEY);
+  API_BASE = getApiBase();
+  closeServerConfigModal();
+  if (typeof showToast === 'function') {
+    showToast('Đã đặt lại Server mặc định!', 'info');
+  }
+  fetchServerInfo();
+}
+
 // ── Logout ───────────────────────────────────────────────
 function handleLogout() {
   showConfirm(
@@ -436,9 +651,20 @@ function clearAuthForms() {
 
 // ── Check Active Session on Start ────────────────────────
 async function checkAuthOnStart() {
+  // Check if phone accessed via QR code autoLoginToken
+  const urlParams = new URLSearchParams(window.location.search);
+  const autoToken = urlParams.get('autoLoginToken');
+  if (autoToken) {
+    localStorage.setItem(AUTH_TOKEN_KEY, autoToken);
+    // Remove autoLoginToken from URL bar cleanly
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
+
   const token = getStoredToken();
   if (!token) {
     showLoginScreen();
+    fetchServerInfo();
     return;
   }
 
@@ -453,9 +679,13 @@ async function checkAuthOnStart() {
       currentUser = data.user;
       showApp();
       await loadWordsFromServer();
+      if (autoToken && typeof showToast === 'function') {
+        showToast(`🎉 Tự động đăng nhập thành công với tài khoản ${currentUser.name}!`, 'success');
+      }
     } else {
       clearStoredSession();
       showLoginScreen();
+      fetchServerInfo();
     }
   } catch (err) {
     console.warn('Backend server check error:', err);
@@ -473,7 +703,8 @@ async function checkAuthOnStart() {
       } catch (e) {}
     }
     showLoginScreen();
-    showAuthError('⚠️ Không thể kết nối tới Server Database. Hãy nhấp đúp file "start_server.bat" để khởi động server!');
+    showAuthError(`⚠️ Không thể kết nối tới Server Database (${API_BASE}). Hãy nhấp đúp file "start_server.bat" trên máy tính để khởi động server!`);
+    fetchServerInfo();
   }
 }
 

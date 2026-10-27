@@ -1,0 +1,2603 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@example.com",
+      "name": "Tester",
+      "password_hash": "bf9aabc47d46529391d981f886e23e6c3996267f4219e6f29feb767d3d260a5d",
+      "salt": "e6fbfb04c180c76b5c97d7506d95d3aa",
+      "token": "8f01117f5adfdea3ef9c494b2f0be9c86ecb121e3727a83d8d7a4e60192eb565",
+      "created_at": "2026-10-26 14:01:54"
+    },
+    {
+      "id": 2,
+      "email": "phan@gmail.com",
+      "name": "hong phan",
+      "password_hash": "660136f9cc265295fd8f97d1c2f79b98537a736704833d362b8d171eab5378b5",
+      "salt": "e254539c39ee24f3de0d97a542077e13",
+      "token": "591b824b1957778dc5c092e1b19929ec8ac8f6f266ce5b600fb9cea230e52aa9",
+      "created_at": "2026-10-26 14:05:49"
+    }
+  ],
+  "userWords": {
+    "1": [
+      {
+        "id": "1",
+        "en": "resilient",
+        "vi": "kiên cường"
+      }
+    ],
+    "2": [
+      {
+        "en": "prohibit",
+        "vi": "cấm",
+        "pronoun": "/prəˈhɪbɪt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijddbf5vznoi9"
+      },
+      {
+        "en": "vicinity",
+        "vi": "vùng lân cận",
+        "pronoun": "/vəˈsɪnəti/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij8c9id2x0p3"
+      },
+      {
+        "en": "diminish",
+        "vi": "làm giảm",
+        "pronoun": "/dɪˈmɪnɪʃ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxciju8jlkjelta"
+      },
+      {
+        "en": "initiate",
+        "vi": "khởi xướng",
+        "pronoun": "/ɪˈnɪʃieɪt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijvavbf4t8ar"
+      },
+      {
+        "en": "legitimate",
+        "vi": "hợp pháp",
+        "pronoun": "/ləˈdʒɪtəmət/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7k8nr7rcpri"
+      },
+      {
+        "en": "cynical",
+        "vi": "hoài nghi",
+        "pronoun": "/ˈsɪnɪkl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij1sath8rm12"
+      },
+      {
+        "en": "inhibit",
+        "vi": "ngăn cản",
+        "pronoun": "/ɪnˈhɪbɪt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijqbibhdch6ca"
+      },
+      {
+        "en": "intrinsic",
+        "vi": "vốn có",
+        "pronoun": "/ɪnˈtrɪnsɪk/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7lbi69afqm2"
+      },
+      {
+        "en": "resilient",
+        "vi": "kiên cường",
+        "pronoun": "/rɪˈzɪliənt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijmrrp3ifupb"
+      },
+      {
+        "en": "feasible",
+        "vi": "khả thi",
+        "pronoun": "/ˈfiːzəbl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnw36rmdh64o"
+      },
+      {
+        "en": "prestige",
+        "vi": "uy tín",
+        "pronoun": "/preˈstiːʒ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij34bg5uqrha5"
+      },
+      {
+        "en": "intervene",
+        "vi": "can thiệp",
+        "pronoun": "/ˌɪntəˈviːn/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5zqud9nsilh"
+      },
+      {
+        "en": "retrieve",
+        "vi": "lấy lại",
+        "pronoun": "/rɪˈtriːv/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijriod6gc88ub"
+      },
+      {
+        "en": "perceive",
+        "vi": "nhận thức",
+        "pronoun": "/pəˈsiːv/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxciji09nk104iac"
+      },
+      {
+        "en": "concede",
+        "vi": "thừa nhận",
+        "pronoun": "/kənˈsiːd/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijca59h0xovao"
+      },
+      {
+        "en": "mediocre",
+        "vi": "tầm thường",
+        "pronoun": "/ˌmiːdiˈəʊkə(r)/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijrshifjs93m"
+      },
+      {
+        "en": "prerequisite",
+        "vi": "điều kiện tiên quyết",
+        "pronoun": "/ˌpriːˈrekwəzɪt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijk280j64mx2"
+      },
+      {
+        "en": "supersede",
+        "vi": "thay thế",
+        "pronoun": "/ˌsuːpəˈsiːd/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijxo93hhly64j"
+      },
+      {
+        "en": "therapeutic",
+        "vi": "thuộc về trị liệu",
+        "pronoun": "/ˌθerəˈpjuːtɪk/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijkq3vh2onubf"
+      },
+      {
+        "en": "explicit",
+        "vi": "rõ ràng",
+        "pronoun": "/ɪkˈsplɪsɪt/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5fe3cd9kg1o"
+      },
+      {
+        "en": "village",
+        "vi": "làng",
+        "pronoun": "/'vɪl.ɪdʒ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijz4bxhy5gb0d"
+      },
+      {
+        "en": "district",
+        "vi": "quận",
+        "pronoun": "/ˈdɪs.trɪkt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij8tj73iqqo4v"
+      },
+      {
+        "en": "capital",
+        "vi": "thủ đô",
+        "pronoun": "/ˈkæp.ə.t̬əl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijuaw2fkeu33j"
+      },
+      {
+        "en": "outskirts",
+        "vi": "ngoại ô",
+        "pronoun": "/ˈaʊt.skɝːts/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijujotw7wa6mn"
+      },
+      {
+        "en": "apartment",
+        "vi": "căn hộ",
+        "pronoun": "/əˈpɑːrt.mənt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijq007rnqazy9"
+      },
+      {
+        "en": "coastal",
+        "vi": "ven biển",
+        "pronoun": "/ˈkoʊ.stəl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij2yyr7st4ref"
+      },
+      {
+        "en": "Tourist attraction",
+        "vi": "điểm thu hút khách du lịch",
+        "pronoun": "/ˈtʊr.ɪst/ /əˈtræk.ʃən/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9odgp6v76ul"
+      },
+      {
+        "en": "Well-developed",
+        "vi": "phát triển tốt",
+        "pronoun": "/ˌwel dɪˈvel.əpt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijdhemip05msg"
+      },
+      {
+        "en": "Vibrant",
+        "vi": "sôi động, náo nhiệt",
+        "pronoun": "/ˈvaɪ.brənt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijzvxct38jq3n"
+      },
+      {
+        "en": "Serene",
+        "vi": "thanh bình",
+        "pronoun": "/səˈriːn/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijol4d216zp1"
+      },
+      {
+        "en": "heritage",
+        "vi": "di sản",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhxwazur72pu"
+      },
+      {
+        "en": "Infrastructure",
+        "vi": "cơ sở hạ tầng",
+        "pronoun": "/ˈɪn.frəˌstrʌk.tʃɚ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijkfxnx4uyzae"
+      },
+      {
+        "en": "Redevelopment",
+        "vi": "tái phát triển",
+        "pronoun": "/ˌriː.dɪˈvel.əp.mənt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijcn8xjba75uk"
+      },
+      {
+        "en": "Cityscape",
+        "vi": "cảnh quan thành phố",
+        "pronoun": "/ˈsɪt.i.skeɪp/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijp2b8slc886f"
+      },
+      {
+        "en": "Metropolis",
+        "vi": "thành phố lớn",
+        "pronoun": "/məˈtrɑː.pəl.ɪs/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijs3yed4hh7v"
+      },
+      {
+        "en": "High-rise building",
+        "vi": "tòa nhà cao tầng",
+        "pronoun": "/ˈhaɪ.raɪz/ /ˈhaɪ.raɪz/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij89jop6o2cqi"
+      },
+      {
+        "en": "Avenue",
+        "vi": "đại lộ",
+        "pronoun": "/ˈæv.ə.nuː/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij6qzhepvec7b"
+      },
+      {
+        "en": "Business district",
+        "vi": "khu thương mại",
+        "pronoun": "/ˈbɪz.nɪs/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijqxpqtyqamhp"
+      },
+      {
+        "en": "Landmark",
+        "vi": "công trình nổi bật",
+        "pronoun": "/ˈlænd.mɑːrk/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijevddfj63wd"
+      },
+      {
+        "en": "Residential building",
+        "vi": "tòa nhà dân cư",
+        "pronoun": "/ˌrez.əˈden.ʃəl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijtzgj97imxzk"
+      },
+      {
+        "en": "Municipal building",
+        "vi": "toà nhà chính quyền",
+        "pronoun": "/mjuːˈnɪs.ə.pəl/ /ˈbɪl.dɪŋ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7fjaf8vr2ff"
+      },
+      {
+        "en": "Urban renewal",
+        "vi": "đổi mới đô thị",
+        "pronoun": "/ˌɝː.bən rɪˈnuː.əl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij0u2hfwmmcfdc"
+      },
+      {
+        "en": "Industrial park",
+        "vi": "khu công nghiệp",
+        "pronoun": "/ɪnˈdʌs.tri.əl ˌpɑːrk/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij096et5dc8726"
+      },
+      {
+        "en": "Diverse",
+        "vi": "đa dạng",
+        "pronoun": "/dɪˈvɝːs/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhpjkk0sbdxk"
+      },
+      {
+        "en": "Pasture",
+        "vi": "đồng cỏ",
+        "pronoun": "/ˈpæs.tʃɚ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijil2pbdouw89"
+      },
+      {
+        "en": "Meadow",
+        "vi": "đồi hoa",
+        "pronoun": "/ˈmed.oʊ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijtlt5s7qupcj"
+      },
+      {
+        "en": "Barn",
+        "vi": "chuồng chăn nuôi",
+        "pronoun": "/bɑːrn/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijuv58eiswxg"
+      },
+      {
+        "en": "Cottage",
+        "vi": "nhà tranh",
+        "pronoun": "/ˈkɑː.t̬ɪdʒ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7dj39744lj3"
+      },
+      {
+        "en": "stream",
+        "vi": "suối",
+        "pronoun": "/striːm/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9bwuherw38m"
+      },
+      {
+        "en": "pomelo",
+        "vi": "bưởi to",
+        "pronoun": "/ˈpɑː.mə.loʊ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnz22fgn20tj"
+      },
+      {
+        "en": "grapefruit",
+        "vi": "bưởi chùm(lai bưởi và cam)",
+        "pronoun": "/ˈɡreɪp.fruːt/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijic32y2k4iyl"
+      },
+      {
+        "en": "remarkable for",
+        "vi": "nổi bật, đặc trưng",
+        "pronoun": "/rɪˈmɑːr.kə.bəl/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijgnvm7hp913h"
+      },
+      {
+        "en": "prodigious",
+        "vi": "phi thường, to lớn",
+        "pronoun": "/prəˈdɪdʒ.əs/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijusqdeg3bcl9"
+      },
+      {
+        "en": "on completion of",
+        "vi": "sau khi hoàn thành",
+        "pronoun": "/kəmˈpliː.ʃən/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij4r0g2mvrvsq"
+      },
+      {
+        "en": "through bad investment",
+        "vi": "đầu tư thất bại",
+        "pronoun": "/θruː/ /ɪnˈvest.mənt/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijl398xhfvj1g"
+      },
+      {
+        "en": "on the understanding that…",
+        "vi": "với điều kiện là...",
+        "pronoun": "/ɑːn/ /ˌʌn.dɚˈstæn.dɪŋ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijyfb6tnb6a0q"
+      },
+      {
+        "en": "far into the night",
+        "vi": "làm việc đến khuya",
+        "pronoun": "",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijvub0wt2dy3"
+      },
+      {
+        "en": "a new phenomenon",
+        "vi": "hiện tượng mới",
+        "pronoun": "/fəˈnɑː.mə.nɑːn/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhr1hptydej6"
+      },
+      {
+        "en": "to find one’s interest drawn to",
+        "vi": "bị thu hút bởi…",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijps6fqiimp1"
+      },
+      {
+        "en": "this promise was fulfilled",
+        "vi": "lời hứa được thực hiện",
+        "pronoun": "/fʊlˈfɪld/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijaa9t51pop9m"
+      },
+      {
+        "en": "to be introduced to (sb)",
+        "vi": "được giới thiệu để gặp ai đó",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcija1jslpkmt4l"
+      },
+      {
+        "en": "marked the start of…",
+        "vi": "bước ngoặc",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijh1rgxcxlwpv"
+      },
+      {
+        "en": "undertake (a task / work / research)",
+        "vi": "đảm nhận, tiến hành….",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijm1p5ktgnuci"
+      },
+      {
+        "en": "struggle to obtain",
+        "vi": "nổ lực để đạt được",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij259ijpyxccv"
+      },
+      {
+        "en": "fail to interrupt",
+        "vi": "không làm gián đoạn",
+        "pronoun": "ˌɪn.t̬əˈrʌpt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijez9xud2kq1n"
+      },
+      {
+        "en": "appointed",
+        "vi": "được bổ nhiệm",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcije5d1nl106u"
+      },
+      {
+        "en": "a triumphant journey",
+        "vi": "chuyến đi thành công khải hoàn",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijx4znyb8g7ue"
+      },
+      {
+        "en": "campaign",
+        "vi": "chiến dịch",
+        "pronoun": "/kæmˈpeɪn/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij1gb9jbxygct"
+      },
+      {
+        "en": "the satisfaction of seeing…",
+        "vi": "hạnh phúc khi chứng kiến",
+        "pronoun": "/ˌsæt̬.ɪsˈfæk.ʃən/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhugpcke29sh"
+      },
+      {
+        "en": "the inauguration of…",
+        "vi": "lễ ra mắt",
+        "pronoun": "ɪˌnɑː.ɡjəˈreɪ.ʃən/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3a47xrkef4n"
+      },
+      {
+        "en": "outstanding achievements",
+        "vi": "thành tựu nổi bật",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijph2ewb4agi"
+      },
+      {
+        "en": "an abundant supply",
+        "vi": "nguồn cung đa dạng",
+        "pronoun": "/əˈbʌn.dənt/ /səˈplaɪ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijpbkf1ed8n6e"
+      },
+      {
+        "en": "prepared the way for…",
+        "vi": "mở đường cho",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijwc0cd3arjy"
+      },
+      {
+        "en": "subsequent generations",
+        "vi": "các thế hệ tiếp theo",
+        "pronoun": "/ˈsʌb.sɪ.kwənt/ /ˌdʒen.əˈreɪ.ʃən/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijbg6svxnbisi"
+      },
+      {
+        "en": "a bitter blow",
+        "vi": "cú sốc",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijwipz6kribg"
+      },
+      {
+        "en": "devote all her energy to…",
+        "vi": "dốc toàn lực vào",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijg3k0tf2y3e9"
+      },
+      {
+        "en": "at the highest point of her fame",
+        "vi": "đỉnh cao của sự nghiệp",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij0fasvdqmotij"
+      },
+      {
+        "en": "medical applications",
+        "vi": "ứng dụng y học",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9gpnj8folyt"
+      },
+      {
+        "en": "scientific",
+        "vi": "có tính khoa học",
+        "pronoun": "/ˌsaɪ.ənˈtɪf.ɪk/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij88irusujm83"
+      },
+      {
+        "en": "leukaemia",
+        "vi": "bệnh bạch cầu",
+        "pronoun": "/luːˈkiː.mi.ə/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijzykhd3x9ik"
+      },
+      {
+        "en": "technique = treatment",
+        "vi": "kỹ thuật, phương pháp",
+        "pronoun": "",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnsfbuvxdn5f"
+      },
+      {
+        "en": "pitchblende",
+        "vi": "quặng pecblen",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij06zwzaibgfkg"
+      },
+      {
+        "en": "industrialised",
+        "vi": "công nghiệp hóa",
+        "pronoun": "/ɪnˈdʌs.tri.ə.laɪzd/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijbyi9t1aokv"
+      },
+      {
+        "en": "industry",
+        "vi": "ngành công nghiệp",
+        "pronoun": "/ˈɪn.də.stri/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij2gkoli8mtiw"
+      },
+      {
+        "en": "manufacturing = manufacture = production",
+        "vi": "sản xuất",
+        "pronoun": "/ˌmæn.jəˈfæk.tʃɚ.ɪŋ/ /ˌmæn.jəˈfæk.tʃɚ/ /prəˈdʌk.ʃən/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij4i6tgy8i3q8"
+      },
+      {
+        "en": "mass production",
+        "vi": "sản xuất hàng loạt",
+        "pronoun": "/ˌmæs prəˈdʌk.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijoghuu8lpspf"
+      },
+      {
+        "en": "factory",
+        "vi": "nhà máy",
+        "pronoun": "/ˈfæk.tɚ.i/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7jtazb2y8mh"
+      },
+      {
+        "en": "workshop",
+        "vi": "xưởng",
+        "pronoun": "/ˈwɝːk.ʃɑːp/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij4i4nmqfuj3e"
+      },
+      {
+        "en": "mechanised",
+        "vi": "cơ giới hóa",
+        "pronoun": "/ˈmek.ə.naɪzd/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3pev45bkal9"
+      },
+      {
+        "en": "machinery",
+        "vi": "máy móc",
+        "pronoun": "/məˈʃiː.nɚ.i/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij6p8t57drah7"
+      },
+      {
+        "en": "innovation",
+        "vi": "đổi mới",
+        "pronoun": "/ˌɪn.əˈveɪ.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijktae0kbo40o"
+      },
+      {
+        "en": "invention",
+        "vi": "phát minh",
+        "pronoun": "/ɪnˈven.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijxmiyv1cvrxh"
+      },
+      {
+        "en": "inventor",
+        "vi": "nhà phát minh",
+        "pronoun": "/ɪnˈven.t̬ɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij23tivuwgx7"
+      },
+      {
+        "en": "process",
+        "vi": "quy trình",
+        "pronoun": "/ˈprɑː.ses/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij42xss6gf1ee"
+      },
+      {
+        "en": "technology",
+        "vi": "công nghệ",
+        "pronoun": "/tekˈnɑː.lə.dʒi/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijir9y1vlg6hl"
+      },
+      {
+        "en": "development",
+        "vi": "sự phát triển",
+        "pronoun": "dɪˈvel.əp.mənt/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijcx1gxpwuov"
+      },
+      {
+        "en": "transformation",
+        "vi": "sự chuyển đổi",
+        "pronoun": "/ˌtræns.fɚˈmeɪ.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijogi70p6xc5"
+      },
+      {
+        "en": "expansion",
+        "vi": "sự mở rộng",
+        "pronoun": "/ɪkˈspæn.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijfsb8y8do8v8"
+      },
+      {
+        "en": "rural",
+        "vi": "nông thôn",
+        "pronoun": "/ˈrʊr.əl/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijynp850lq4s"
+      },
+      {
+        "en": "urban",
+        "vi": "đô thị",
+        "pronoun": "/ˈɝː.bən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijfp073zqawn8"
+      },
+      {
+        "en": "agrarian",
+        "vi": "nông nghiệp",
+        "pronoun": "/əˈɡrer.i.ən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijndb8g1zkmwr"
+      },
+      {
+        "en": "society",
+        "vi": "xã hội",
+        "pronoun": "/səˈsaɪ.ə.t̬i/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijaaq9mlivyic"
+      },
+      {
+        "en": "urbanisation",
+        "vi": "đô thị hóa",
+        "pronoun": "/ˌɝː.bən.əˈzeɪ.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij26gk2jcqmgc"
+      },
+      {
+        "en": "population",
+        "vi": "dân số",
+        "pronoun": "/ˌpɑː.pjəˈleɪ.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijezclg0c82is"
+      },
+      {
+        "en": "citizen",
+        "vi": "công dân",
+        "pronoun": "/ˈsɪt̬.ə.zən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij4tb3b2hwldm"
+      },
+      {
+        "en": "resident",
+        "vi": "cư dân",
+        "pronoun": "/ˈrez.ə.dənt/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijyf2s1f8ax8g"
+      },
+      {
+        "en": "community",
+        "vi": "cộng đồng",
+        "pronoun": "/kəˈmjuː.nə.t̬i/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijynv2h66cukf"
+      },
+      {
+        "en": "migration",
+        "vi": "di cư",
+        "pronoun": "/maɪˈɡreɪ.ʃən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijo60bbqiddx"
+      },
+      {
+        "en": "labour",
+        "vi": "lao động",
+        "pronoun": "/ˈleɪ.bɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijwy2ym6y98sn"
+      },
+      {
+        "en": "labour force",
+        "vi": "lực lượng lao động",
+        "pronoun": "/ˈleɪ.bɚ ˌfɔːrs/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij1g47p9gurqh"
+      },
+      {
+        "en": "worker",
+        "vi": "công nhân",
+        "pronoun": "ˈwɝː.kɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijjwiao1pgzd"
+      },
+      {
+        "en": "factory worker",
+        "vi": "công nhân nhà máy",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5q36eniyg5n"
+      },
+      {
+        "en": "employer",
+        "vi": "chủ lao động",
+        "pronoun": "/ɪmˈplɔɪ.ɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5hccv78zzkd"
+      },
+      {
+        "en": "employee",
+        "vi": "người lao động",
+        "pronoun": "/ɪmˈplɔɪ.iː/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijoenbn29b7es"
+      },
+      {
+        "en": "manufacturer",
+        "vi": "nhà sản xuất",
+        "pronoun": "/ˌmæn.jəˈfæk.tʃɚ.ɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijjt5b7sqv90c"
+      },
+      {
+        "en": "operator",
+        "vi": "người vận hành",
+        "pronoun": "/ˈɑː.pə.reɪ.t̬ɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijcp605jisee4"
+      },
+      {
+        "en": "apprentice",
+        "vi": "học việc",
+        "pronoun": "/əˈpren.t̬ɪs/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijmbqovxh82rt"
+      },
+      {
+        "en": "craftsman",
+        "vi": "thợ thủ công",
+        "pronoun": "/ˈkræfts.mən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijrtgauvv5wd"
+      },
+      {
+        "en": "spinner",
+        "vi": "người kéo sợi",
+        "pronoun": "/ˈspɪn.ɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijgjlp8qfvd6"
+      },
+      {
+        "en": "weaver",
+        "vi": "thợ dệt",
+        "pronoun": "/ˈwiː.vɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijpx1d24nci1b"
+      },
+      {
+        "en": "dyer",
+        "vi": "thợ nhuộm",
+        "pronoun": "/ˈdaɪ.ɚ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijeq9p1gxc8es"
+      },
+      {
+        "en": "skilled worker",
+        "vi": "lao động lành nghề",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijdq0h1d03ajg"
+      },
+      {
+        "en": "unskilled worker",
+        "vi": "lao động phổ thông",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijbcin8qr6umj"
+      },
+      {
+        "en": "textile",
+        "vi": "dệt may",
+        "pronoun": "/ˈtek.staɪl/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijb3bvaqfrmh"
+      },
+      {
+        "en": "textile industry",
+        "vi": "ngành dệt may",
+        "pronoun": "",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijha7vq4pz90m"
+      },
+      {
+        "en": "cotton",
+        "vi": "bông",
+        "pronoun": "/ˈkɑː.tən/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij8aa9kku8kdg"
+      },
+      {
+        "en": "wool",
+        "vi": "len",
+        "pronoun": "/wʊl/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnwj4ylq1elj"
+      },
+      {
+        "en": "linen",
+        "vi": "vải lanh",
+        "pronoun": "/ˈlɪn.ɪn/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij88aw9hcmmjf"
+      },
+      {
+        "en": "yarn",
+        "vi": "sợi",
+        "pronoun": "/jɑːrn/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij1m9lxbql3hs"
+      },
+      {
+        "en": "thread",
+        "vi": "chỉ",
+        "pronoun": "/θred/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij1ntv30nzgz4"
+      },
+      {
+        "en": "cloth",
+        "vi": "vải",
+        "pronoun": "/klɑːθ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij99lcwy0w1nr"
+      },
+      {
+        "en": "loom",
+        "vi": "khung dệt",
+        "pronoun": "/luːm/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijm0sakkh202r"
+      },
+      {
+        "en": "power loom",
+        "vi": "máy dệt cơ khí",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijtnkiyazam3"
+      },
+      {
+        "en": "spinning jenny",
+        "vi": "máy kéo sợi Jenny",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnsoond7d71m"
+      },
+      {
+        "en": "knitting frame",
+        "vi": "khung đan",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij57tjok37tq7"
+      },
+      {
+        "en": "steam",
+        "vi": "hơi nước",
+        "pronoun": "/stiːm/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijgcrdk7pmmz5"
+      },
+      {
+        "en": "steam power",
+        "vi": "năng lượng hơi nước",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijrmjq4lkb819"
+      },
+      {
+        "en": "steam engine",
+        "vi": "động cơ hơi nước",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij2x6ugerk19m"
+      },
+      {
+        "en": "comfortable to wear",
+        "vi": "mặc thoải mái",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijcf82yltqnqu"
+      },
+      {
+        "en": "comfortable and practical",
+        "vi": "thoải mái và thiết thực",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijrz3joi4p1pg"
+      },
+      {
+        "en": "light and breathable",
+        "vi": "nhẹ và thoáng khí",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijo089o5znhrk"
+      },
+      {
+        "en": "soft and comfortable",
+        "vi": "mềm và thoải mái",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijsbepnqj294"
+      },
+      {
+        "en": "easy to wear",
+        "vi": "dễ mặc",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5o08e2tbfx6"
+      },
+      {
+        "en": "easy to match",
+        "vi": "dễ phối đồ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijxzemdjdy08m"
+      },
+      {
+        "en": "easy to style",
+        "vi": "dễ tạo kiểu/phối đồ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijqc5arw57psg"
+      },
+      {
+        "en": "well-fitted",
+        "vi": "vừa vặn",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7sva6vqj29v"
+      },
+      {
+        "en": "fit me perfectly",
+        "vi": "vừa với tôi hoàn hảo",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijpo8swudjx4h"
+      },
+      {
+        "en": "fit me well",
+        "vi": "vừa với tôi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijoz404890che"
+      },
+      {
+        "en": "too tight",
+        "vi": "quá chật",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijdmywwkpumea"
+      },
+      {
+        "en": "too loose",
+        "vi": "quá rộng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijdnxvqrjnsj"
+      },
+      {
+        "en": "slightly oversized",
+        "vi": "hơi rộng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijjqd8yz2vyl"
+      },
+      {
+        "en": "loose-fitting",
+        "vi": "rộng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijizw1ro0cmp"
+      },
+      {
+        "en": "tight-fitting",
+        "vi": "bó sát",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijvvhl33vzk5"
+      },
+      {
+        "en": "figure-hugging",
+        "vi": "ôm sát cơ thể",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijtrwu4t1jpgf"
+      },
+      {
+        "en": "comfortable around the waist",
+        "vi": "thoải mái ở phần eo",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijubtndr3ghn"
+      },
+      {
+        "en": "made from high-quality material",
+        "vi": "làm từ chất liệu cao cấp",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijg0ztv253sbh"
+      },
+      {
+        "en": "made from breathable fabric",
+        "vi": "làm từ vải thoáng khí",
+        "pronoun": "/ˈfӕbrik/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijinz4v0icha"
+      },
+      {
+        "en": "made from soft fabric",
+        "vi": "làm từ chất liệu mềm",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijt77zj8jhvy"
+      },
+      {
+        "en": "compounds",
+        "vi": "hợp chất",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3nurmnpo22y"
+      },
+      {
+        "en": "look flattering on me",
+        "vi": "tôn dáng/ hợp với tôi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijychbvtdbjw8"
+      },
+      {
+        "en": "flatter my figure",
+        "vi": "tôn dáng của tôi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijidxn0uwq4bj"
+      },
+      {
+        "en": "show off my figure",
+        "vi": "khoe/ tôn dáng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij50vjff36gjv"
+      },
+      {
+        "en": "hide certain areas of my body",
+        "vi": "che một số vùng cơ thể",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijudjxzvpeni"
+      },
+      {
+        "en": "make me look slimmer",
+        "vi": "khiến tôi trông thon gọn hơn",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcije9p6mgxl3dt"
+      },
+      {
+        "en": "make me look taller",
+        "vi": "khiến tôi trông cao hơn",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij0yj8vryzf7x"
+      },
+      {
+        "en": "make me look younger",
+        "vi": "khiến tôi trông trẻ hơn",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijxhb33swy7a9"
+      },
+      {
+        "en": "make me look more mature",
+        "vi": "khiến tôi trông trưởng thành hơn",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij0m7xd9d45pfe"
+      },
+      {
+        "en": "bring out my features",
+        "vi": "làm nổi bật đường nét của tôi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijoycoesgunml"
+      },
+      {
+        "en": "complement my appearance",
+        "vi": "tôn lên ngoại hình của tôi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3p1x45m33ba"
+      },
+      {
+        "en": "prehistoric",
+        "vi": "thời tiền sử",
+        "pronoun": "/priːiˈstorik/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijcsncba7cku"
+      },
+      {
+        "en": "archaeological",
+        "vi": "khảo cổ học",
+        "pronoun": "",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijdfqp654g5no"
+      },
+      {
+        "en": "axe",
+        "vi": "cái rìu",
+        "pronoun": "/ӕks/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijwy5goz8o9k"
+      },
+      {
+        "en": "clam",
+        "vi": "con trai",
+        "pronoun": "/klӕm/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijwekmz4uy8zo"
+      },
+      {
+        "en": "shell",
+        "vi": "vỏ, mai",
+        "pronoun": "/ʃel/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij65bmtm71arh"
+      },
+      {
+        "en": "shelter",
+        "vi": "sự ẩn náu, che chở",
+        "pronoun": "/ˈʃeltə/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij2r04t5joizh"
+      },
+      {
+        "en": "impenetrable",
+        "vi": "không xâm nhập, vào được",
+        "pronoun": "/imˈpenitrəbl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijbyabf9xuxpf"
+      },
+      {
+        "en": "lightweight material",
+        "vi": "chất liệu nhẹ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijpvfbgyhwt3o"
+      },
+      {
+        "en": "durable material",
+        "vi": "chất liệu bền",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijkq3kzjr0xb"
+      },
+      {
+        "en": "good quality",
+        "vi": "chất lượng tốt",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijylsfjxlnz4b"
+      },
+      {
+        "en": "poor quality",
+        "vi": "chất lượng kém",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijs5k0bdij4f"
+      },
+      {
+        "en": "long-lasting",
+        "vi": "bền, sử dụng lâu dài",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijl2ghjf9syxh"
+      },
+      {
+        "en": "stylish and modern",
+        "vi": "phong cách và hiện đại",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijouc5bi3bgcr"
+      },
+      {
+        "en": "simple but stylish",
+        "vi": "đơn giản nhưng có phong cách",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijoym6acl62zf"
+      },
+      {
+        "en": "simple and elegant",
+        "vi": "đơn giản và thanh lịch",
+        "pronoun": "/ˈeliɡənt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij77gt9fjp0u"
+      },
+      {
+        "en": "casual and comfortable",
+        "vi": "thoải mái và thường ngày",
+        "pronoun": "/ˈkӕʒuəl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9jbj6jactvu"
+      },
+      {
+        "en": "smart and sophisticated",
+        "vi": "lịch sự và tinh tế",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij4zg5oufh55f"
+      },
+      {
+        "en": "encompass",
+        "vi": "bao gồm",
+        "pronoun": "/ɪnˈkʌm.pəs/",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijy5dsqbp9nf"
+      },
+      {
+        "en": "separate",
+        "vi": "chia",
+        "pronoun": "/ˈsep.ɚ.ət/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijxatpnxo642l"
+      },
+      {
+        "en": "coincidence",
+        "vi": "sự trùng hợp",
+        "pronoun": "/koʊˈɪn.sɪ.dəns/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijidh67n1uauq"
+      },
+      {
+        "en": "evidence",
+        "vi": "chứng cứ",
+        "pronoun": "/ˈev.ə.dəns/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij13jqgv87zgt"
+      },
+      {
+        "en": "unearthed",
+        "vi": "khai quật",
+        "pronoun": "/ ʌnˈɝːθ",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijyh3zry2u0wp"
+      },
+      {
+        "en": "volcanic",
+        "vi": "núi lửa",
+        "pronoun": "/ vɑːlˈkæn.ɪk /",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijoub4977qhcg"
+      },
+      {
+        "en": "occupied",
+        "vi": "chiếm lĩnh",
+        "pronoun": "/ˈɑː.kjə.paɪd/",
+        "example": "",
+        "wordType": "adj",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijs0l0mdtinfk"
+      },
+      {
+        "en": "excavation",
+        "vi": "moi lên",
+        "pronoun": "/ ˌeks.kəˈveɪ.ʃ ə n /",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij2327diwwy2w"
+      },
+      {
+        "en": "resemble=similar",
+        "vi": "giống",
+        "pronoun": "/rɪˈzem.bəl/",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxciji2b0i4sgryf"
+      },
+      {
+        "en": "inhabitant",
+        "vi": "họ sinh sống",
+        "pronoun": "/ ɪnˈhæb.ɪ.t ə nt /",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5z520jo21dt"
+      },
+      {
+        "en": "propotion",
+        "vi": "cân bằng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcije63rj0d4ul"
+      },
+      {
+        "en": "appreciate",
+        "vi": "hiểu rõ giá trị, đánh giá cao",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijjawob0inbsm"
+      },
+      {
+        "en": "occur",
+        "vi": "xảy ra",
+        "pronoun": "/əˈkɜːr/",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijqinuna5yg1"
+      },
+      {
+        "en": "dig",
+        "vi": "đào",
+        "pronoun": "/dɪɡ/",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijedgfiwxzyu6"
+      },
+      {
+        "en": "ditch",
+        "vi": "mương",
+        "pronoun": "/dɪtʃ/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijrkltnapq7rp"
+      },
+      {
+        "en": "subside",
+        "vi": "lắng xuống",
+        "pronoun": "/səbˈsaɪd/",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij7qoxxo0t31g"
+      },
+      {
+        "en": "subsidence",
+        "vi": "sự sụp lún",
+        "pronoun": "/səbˈsaɪdns/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij2dpj4s4carj"
+      },
+      {
+        "en": "persist",
+        "vi": "duy trì",
+        "pronoun": "/pərˈsɪst/",
+        "example": "",
+        "wordType": "v",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5olv7j9ouhv"
+      },
+      {
+        "en": "increase=grow=climb=rise",
+        "vi": "tăng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijufs167dk13"
+      },
+      {
+        "en": "soar",
+        "vi": "tăng vọt",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhb3cgyoi5r"
+      },
+      {
+        "en": "go up",
+        "vi": "đi lên",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijc9bblrqq5ri"
+      },
+      {
+        "en": "pick up",
+        "vi": "có xu hướng tăng lại",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnpd7r815utj"
+      },
+      {
+        "en": "decrease=fall=reduce",
+        "vi": "giảm",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijpnroct0veje"
+      },
+      {
+        "en": "drop",
+        "vi": "rơi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijkft6he884z"
+      },
+      {
+        "en": "decline",
+        "vi": "sụt giảm",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij6shk1igaajx"
+      },
+      {
+        "en": "go down",
+        "vi": "đi xuống",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijcwrwcdp1c4l"
+      },
+      {
+        "en": "plunge",
+        "vi": "lao dốc",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhp35q0s134"
+      },
+      {
+        "en": "dip",
+        "vi": "giảm nhẹ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijahbpzi9qiiv"
+      },
+      {
+        "en": "fluctuate",
+        "vi": "dao động",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijf4m0dnt99e"
+      },
+      {
+        "en": "vary",
+        "vi": "biến động",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9hbumvnpx3b"
+      },
+      {
+        "en": "instability",
+        "vi": "không ổn định",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijdhxavdod6x4"
+      },
+      {
+        "en": "inconsistency=be erratic",
+        "vi": "không có tính đồng nhất",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijl49y2i6k8vl"
+      },
+      {
+        "en": "remain steady=stay constant",
+        "vi": "giữ nguyên sự ổn định",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij20kd5gvkgag"
+      },
+      {
+        "en": "maintain the same level",
+        "vi": "giữ mức cũ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij802u5zybfju"
+      },
+      {
+        "en": "stabilize",
+        "vi": "ổn định",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij843b7k0mbeu"
+      },
+      {
+        "en": "hold firm",
+        "vi": "giữ vững",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5f1fj7dmmvu"
+      },
+      {
+        "en": "be unchanged",
+        "vi": "không đổi",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij6fwkhq27bm9"
+      },
+      {
+        "en": "flatline",
+        "vi": "duy trì",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3pjg38xpoih"
+      },
+      {
+        "en": "sharply",
+        "vi": "mạnh mẽ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxciji8kxj72bru"
+      },
+      {
+        "en": "significantly=considerably",
+        "vi": "đáng kể",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijy88ibj6h0g"
+      },
+      {
+        "en": "slightly",
+        "vi": "nhẹ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijgwt945z7wdo"
+      },
+      {
+        "en": "gradually",
+        "vi": "dần dần",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij53d60xckfhu"
+      },
+      {
+        "en": "dramtically",
+        "vi": "đột ngột",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijs5ihyfxxro"
+      },
+      {
+        "en": "minimally",
+        "vi": "rất nhỏ",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijqbw21fst238"
+      },
+      {
+        "en": "helpdesk supervisor",
+        "vi": "hỗ trợ khách hàng",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijavn8y5h4fkh"
+      },
+      {
+        "en": "specification",
+        "vi": "thông số, kỹ thuật",
+        "pronoun": "/ ˌspes.ə.fəˈkeɪ.ʃ ə n /",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijsjp61n53pn"
+      },
+      {
+        "en": "DTP operator",
+        "vi": "chuyên viên dàn trang",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijn9nlwg287g"
+      },
+      {
+        "en": "publication",
+        "vi": "xuất bản",
+        "pronoun": "/ ˌpʌb.ləˈkeɪ.ʃ ə n /",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij4bsqw9ecc1n"
+      },
+      {
+        "en": "amount",
+        "vi": "lượng",
+        "pronoun": "/əˈmaʊnt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij1pkq0mla80a"
+      },
+      {
+        "en": "level",
+        "vi": "mức độ",
+        "pronoun": "/ˈlɛvəl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijzw2hbz945j"
+      },
+      {
+        "en": "number",
+        "vi": "số lượng",
+        "pronoun": "/ˈnʌmbər/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijwjvc96zmf7g"
+      },
+      {
+        "en": "Percentage",
+        "vi": "phần trăm",
+        "pronoun": "/pəˈsɛntɪdʒ/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijigkxnj6uay"
+      },
+      {
+        "en": "proportion",
+        "vi": "tỷ lệ",
+        "pronoun": "/prəˈpɔrʃən/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3ytaffier2w"
+      },
+      {
+        "en": "Quantity",
+        "vi": "số lượng, khối lượng",
+        "pronoun": "/ˈkwɒntɪti/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijhn16wvifl4"
+      },
+      {
+        "en": "rate",
+        "vi": "tỷ lệ",
+        "pronoun": "/reɪt/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijzn642543b6"
+      },
+      {
+        "en": "total",
+        "vi": "tổng cộng, tổng số",
+        "pronoun": "/ˈtoʊtəl/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij5ao12tm460s"
+      },
+      {
+        "en": "volume",
+        "vi": "thể tích, lượng",
+        "pronoun": "/ˈvɒljum/",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3rstdzfvjsy"
+      },
+      {
+        "en": "fluctuate wildly",
+        "vi": "dao động mạnh mẽ",
+        "pronoun": "/ˈflʌktʃueɪt ˈwaɪldli/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijbsd4sytuhhb"
+      },
+      {
+        "en": "gradual decrease",
+        "vi": "sự giảm dần dần",
+        "pronoun": "/ˈɡrædʒuəl dɪˈkriːs/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijo6kay2akepn"
+      },
+      {
+        "en": "hit a low of",
+        "vi": "chạm mức thấp nhất",
+        "pronoun": "/hɪt ə loʊ ɒv/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijumnui9gxskp"
+      },
+      {
+        "en": "peak at",
+        "vi": "đạt đỉnh ở mức",
+        "pronoun": "/piːk æt/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9fhsvybvt95"
+      },
+      {
+        "en": "rapid growth",
+        "vi": "tăng trưởng nhanh",
+        "pronoun": "/ˈræpɪd ɡroʊθ/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijqvqpjoq2dsn"
+      },
+      {
+        "en": "reach a high of",
+        "vi": "đạt mức cao nhất",
+        "pronoun": "/riːtʃ ə haɪ ɒv/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijsgbejipy24m"
+      },
+      {
+        "en": "sharp fall",
+        "vi": "sự giảm mạnh",
+        "pronoun": "/ʃɑːrp fɔːl/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3z8h2i60tdo"
+      },
+      {
+        "en": "significant increase",
+        "vi": "sự tăng đáng kể",
+        "pronoun": "/sɪɡˈnɪfɪkənt ɪnˈkriːs/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijq5dt4em6gz"
+      },
+      {
+        "en": "steady decline",
+        "vi": "sự giảm đều đặn",
+        "pronoun": "/ˈstɛdi dɪˈklaɪn/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij3vhq2puq3xj"
+      },
+      {
+        "en": "sudden drop",
+        "vi": "sự gảm đột ngột",
+        "pronoun": "/ˈsʌdn drɒp/",
+        "example": "",
+        "wordType": "collocation",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijr13sxyh8t5"
+      },
+      {
+        "en": "purpose",
+        "vi": "mục đích",
+        "pronoun": "/ˈpəːpəs/",
+        "example": "",
+        "wordType": "n",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcij9rprphqbsj8"
+      },
+      {
+        "en": "overseas=abroad=foreign=international=out-of-country",
+        "vi": "nước ngoài",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijw9myo9yy4jb"
+      },
+      {
+        "en": "visitor=guests=tourist/sightseers=callers=traveler=attendee/participant=user/traffic",
+        "vi": "du khách",
+        "pronoun": "",
+        "example": "",
+        "wordType": "",
+        "status": "learning",
+        "addedAt": 0,
+        "id": "mvpbxcijnsrfuycwny"
+      },
+      {
+        "id": "mvpbxiim51u7pk98mzf",
+        "en": "start",
+        "vi": "aaaa",
+        "pronoun": "",
+        "example": "",
+        "status": "learning",
+        "wordType": "",
+        "addedAt": 1793023556350
+      }
+    ]
+  }
+}
